@@ -1,0 +1,69 @@
+1) Initialize git into a project folder:
+$     git init
+
+
+2) Add all files to the staging area:
+||$   git add -f {FILE}
+||$   git add .
+||$   git reset #(to undo the add .)
+
+
+3) See the status/branches of the staging area:
+$     git status
+$     git branch [-a] #(see current/all branch)
+$     git branch {BRANCH_NAME} #(create new branch) 
+$     git checkout [ {BRANCH-NAME} | {COMMIT-HASH} ] #switch to branch/commit
+
+
+4) Commit all files to be ready to upload:
+$     git commit -m "anyCommentHere"
+
+
+5) Set up Credentials for Git using the commandline:
+$     git config --global [--add] user.name "{USERNAME}"
+$     git config --global [--add] user.email "{EMAIL}"
+$     git config --global [--add] user.password "{PASSWORD}"
+
+$     git config --global --unset user.[name|email|password]
+
+
+5) Connect to github (first make a repository online):
+$     git remote add {URL_NAME} {URL.git}
+eg$   git remote add origin https://github.com/00life/tracker-r324.git
+
+
+6) Upload to github #(-u=remembers the settings):
+$     git push -u {URL_NAME} {BRANCH_NAME}
+eg$   git push -u origin master
+eg$   git push .
+
+NOTE:  Sometimes you need to pull first before you can push
+
+7) Pull from repository (other than clone):
+$     git pull {URL_NAME} {BRANCH_NAME}
+
+===============================================
+
+8) See logs and tags
+$ git log
+$ git tag
+$ git show {TAG-NAME}
+
+9) Reset Credentials:
+$     git config --edit
+$     git config --global credential.helper wincred #(window machines)
+$     git config --global credential.helper osxkeychain #(mac machines)
+
+10) Create an access token (github.com):
+~     Settings -> Developer settings -> Generate new token -> [ Token (classic) | Fine-grain tokens ]
+$     git remote add origin https://{TOKEN}@github.com/[USER]/[REPO]
+
+================================================
+
+11) Cloning a repository:
+$     git clone {URL.git}
+$     cd {REPOSITORY}
+
+NOTE: if the repository is empty, you may need to switch branches
+$     git branch -a #(find the branch you want)
+$     git checkout {BRANCH-NAME}
