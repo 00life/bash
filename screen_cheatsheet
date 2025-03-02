@@ -1,7 +1,7 @@
 [ Open and Closes Windows ]
 ---------------------------
 Ctrl-a + c: Opens a new window
-Ctrl-a + x: Closes the current window
+Ctrl-a + k: It close the current windows (kill)
 Ctrl-a + A: Renames the current window
 
 [ List Windows -ls]
