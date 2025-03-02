@@ -1,7 +1,8 @@
-[ Open Screen Sesson ]
+[ Screen Sesson ]
 ----------------------
 $    screen [ -S  <NAME> ]
-$    screen -X -S  <NAME> <CMD> #(Enter command on a session)
+$    screen -ls
+$    screen -r
 
 [ Open and Closes Windows ]
 ---------------------------
@@ -24,12 +25,12 @@ Ctrl-a + r: It reattach a detached screen session
 Ctrl-a + S: Splits the screen horizontally
 Ctrl-a + |: It split the current windows vertically
 Ctrl-a + tab: Jumps between regions
-Ctrl-a + X: Close active Split window
+Ctrl-a + X  ||  Ctrl-a + x: Close active Split window
 Ctrl-a + Q: Close all Split windows
 
 [ Toggles Windows ]
 -------------------
-Ctrl-a + p: Moves to the previous window
+Ctrl-a + Ctrl-a  ||  Ctrl-a + p: Moves to the previous window
 Ctrl-a + n: Moves to the next window
 Ctrl-a + 0: Switches to window 0
 
