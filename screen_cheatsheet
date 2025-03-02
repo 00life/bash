@@ -1,3 +1,8 @@
+[ Open Screen Sesson ]
+----------------------
+$    screen [ -S  <NAME> ]
+$    screen -X -S  <NAME> <CMD> #(Enter command on a session)
+
 [ Open and Closes Windows ]
 ---------------------------
 Ctrl-a + c: Opens a new window
