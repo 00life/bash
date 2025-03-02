@@ -3,8 +3,8 @@
 Ctrl-a + c: Opens a new window
 Ctrl-a + x: Closes the current window
 
-[ List Windows ]
-----------------
+[ List Windows -ls]
+-------------------
 Ctrl-a + w: Displays the list of Terminal windows
 Ctrl-a + ": Lists all open windows
 
