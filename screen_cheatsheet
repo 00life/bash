@@ -1,0 +1,41 @@
+[ Open and Closes Windows ]
+---------------------------
+Ctrl-a + c: Opens a new window
+Ctrl-a + x: Closes the current window
+
+[ List Windows ]
+----------------
+Ctrl-a + w: Displays the list of Terminal windows
+Ctrl-a + ": Lists all open windows
+
+[ Detach and Reattach Screen]
+-----------------------------
+Ctrl-a + d: Detaches a screen session
+Ctrl-a + r: It reattach a detached screen session
+
+[ Split Screen ]
+----------------
+Ctrl-a + S: Splits the screen horizontally
+Ctrl-a + |: It split the current windows vertically
+Ctrl-a + tab: Jumps between regions
+Ctrl-a + X: Removes the current region
+
+
+[ Toggles Windows ]
+-------------------
+Ctrl-a + p: Moves to the previous window
+Ctrl-a + n: Moves to the next window
+Ctrl-a + 0: Switches to window 0
+
+[ Names Windows ]
+-----------------
+Ctrl-a + A: Renames the current window
+
+Ctrl-a + : Enters command mode
+Ctrl-a + a: Cancels the initial Ctrl-a shortcut
+
+[ Copy and Paste Mode ]
+-----------------------
+Ctrl-a + [: It start the copy mode
+Ctrl-a + ]: It paste the copied text
+
