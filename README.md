@@ -88,9 +88,6 @@ Variables are temporary to the shell session or specific functions.
 | `&>` | stdout + stderr | Overwrite file ||||
 
 
-
-
-
 # 2. Set the trap (runs rm when script exits, even if it fails)
 USe **Trap** to delete temp file automatically on exit.
 EXIT covers normal finish, Ctrl+C, and errors.**
@@ -169,7 +166,6 @@ while getopts "n:v" opt; do
 done
 
 shift $((OPTIND -1)) # Shift away the flags so $1 is the first non-flag argument
-
 echo "Hello, $NAME. Verbose is $VERBOSE. Extra args: $@"
 ```
 
