@@ -130,5 +130,25 @@ tmp_file=$(mktemp)
 # EXIT covers normal finish, Ctrl+C, and errors.
 trap 'rm -f "$tmp_file"' EXIT
 
+# Bash Loops Summary
+
+
+| Loop Type | Usage | Best For... |
+| :--- | :--- | :--- |
+| **`for...in`** | `for x in list; do` | Iterating over arrays, files, or strings. |
+| **`for ((...))`** | `for ((i=0; i<n; i++))` | Numeric counters and C-style logic. |
+| **`while`** | `while [[ cond ]]; do` | Running until a condition is no longer met. |
+| **`until`** | `until [[ cond ]]; do` | Running until a specific condition starts being met. |
+
+## Control Flow
+- **`break`**: Stop the loop entirely.
+- **`continue`**: Skip to the next loop cycle.
+
+## Pro-Tip: File Globbing
+```bash
+for file in *.jpg; do
+    mv "$file" "${file%.jpg}.png"
+done
+```
 # 3. Use the file
 echo "Working..." > "$tmp_file"
