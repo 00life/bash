@@ -29,10 +29,10 @@ Compare text and check for empty variables.
 Compare whole numbers.
 
 | Flag | Description | Flag | Description | Operator | Usage | Description |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `-eq` | **Equal** to | `-ge` | **Greater than or equal** to | `!` | `! CONDITION` | **NOT** (Inverts the result) |
-| `-ne` | **Not equal** to | `-lt` | **Less than** | `&&` | `[[ C1 && C2 ]]` | **AND** (Both must be true) |
-| `-gt` | **Greater than** | `-le` | **Less than or equal** to | `\|\|` | `[[ C1 \|\| C2 ]]` | **OR** (At least one must be true) |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `-eq` | **Equal** to | `-ge` | **Greater than or equal** to || `!` | `! CONDITION` | **NOT** (Inverts the result) |
+| `-ne` | **Not equal** to | `-lt` | **Less than** || `&&` | `[[ C1 && C2 ]]` | **AND** (Both must be true) |
+| `-gt` | **Greater than** | `-le` | **Less than or equal** to || `\|\|` | `[[ C1 \|\| C2 ]]` | **OR** (At least one must be true) |
 
 
 ## Basic Template
