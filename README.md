@@ -163,4 +163,21 @@ If your file is CSV-like (e.g., `Name,Age`), you can split it into variables imm
 while IFS="," read -r name age; do
     echo "$name is $age years old"
 done < data.csv
+```
 
+# Bash Argument Parsing Cheatsheet
+
+Using a `while` + `case` loop is the most flexible way to handle script inputs.
+
+## Args Parse for the Standard Pattern
+```bash
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -u|--user)     USER="$2"; shift 2 ;; # Flag with value
+    -v|--verbose)  VERBOSE=1; shift ;;   # Boolean flag
+    --)            shift; break ;;       # End of options
+    *)             POSITIONAL+=("$1"); shift ;; # Save positional args
+  esac
+done
+set -- "${POSITIONAL[@]}" # Restore positional arguments
+```
