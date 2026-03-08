@@ -17,15 +17,12 @@ Check properties of files and directories.
 ## 2. String Operators
 Compare text and check for empty variables.
 
-| Flag/Op | True if... |
-| :--- | :--- |
-| `-z` | String is **empty** (zero length) |
-| `-n` | String is **not empty** (non-zero length) |
-| `==` | Strings are **equal** |
+| Flag/Op | True if... | Flag/Op | True if... |
+| :--- | :--- | :--- | :--- |
+| `-z` | String is **empty** (zero length) | `<` | String sorts **before** another (ASCII) |
+| `-n` | String is **not empty** (non-zero length) | `>` | String sorts **after** another (ASCII) |
+| `==` | Strings are **equal** | `=~` | String matches **regex** (requires `[[ ]]`) |
 | `!=` | Strings are **not equal** |
-| `<` | String sorts **before** another (ASCII) |
-| `>` | String sorts **after** another (ASCII) |
-| `=~` | String matches **regex** (requires `[[ ]]`) |
 
 
 ## 3. Integer Operators
