@@ -68,3 +68,56 @@ elif [[ -z "$VAR" ]]; then
 else
     echo "Condition not met."
 fi
+
+# Bash Temporary Data Cheatsheet
+
+Summary of methods for handling temporary files, folders, and variables in Bash.
+
+---
+
+## 1. Files and Directories (`mktemp`)
+The `mktemp` command is the safest way to create unique, secure temporary objects.
+
+
+| Action | Command | Description |
+| :--- | :--- | :--- |
+| **Create File** | `tmp=$(mktemp)` | Creates a unique file in `/tmp`. |
+| **Create Directory** | `dir=$(mktemp -d)` | Creates a unique folder in `/tmp`. |
+| **Custom Name** | `mktemp /tmp/log.XXXX` | Uses `X` as placeholders for random chars. |
+| **Dry Run** | `mktemp -u` | Generates a unique name **without** creating it. |
+
+## 2. Temporary Data Streams
+Pass data between commands without creating physical files on the disk.
+
+
+| Method | Syntax | Description |
+| :--- | :--- | :--- |
+| **Process Sub** | `<(command)` | Treats command output like a file (e.g., `diff <(ls a) <(ls b)`). |
+| **Here-Doc** | `<<EOF` | Passes a multi-line block of text to a command. |
+| **Here-String**| `<<< "$VAR"` | Passes a variable's content as a file input. |
+
+## 3. Variables
+Variables are temporary to the shell session or specific functions.
+
+
+| Type | Syntax | Scope |
+| :--- | :--- | :--- |
+| **Shell Var** | `TEMP="data"` | Available until the script ends. |
+| **Local Var** | `local tmp="data"` | Only available inside a **function**. |
+| **One-shot** | `VAR=val ./script` | Only available to that **one command**. |
+
+---
+
+## 4. Best Practice: Automatic Cleanup
+Since temporary files persist after a script crashes or finishes, use a **Trap** to delete them automatically on exit.
+
+```bash
+# 1. Create the temp file
+tmp_file=$(mktemp)
+
+# 2. Set the trap (runs rm when script exits, even if it fails)
+# EXIT covers normal finish, Ctrl+C, and errors.
+trap 'rm -f "$tmp_file"' EXIT
+
+# 3. Use the file
+echo "Working..." > "$tmp_file"
