@@ -210,3 +210,50 @@ done
 shift $((OPTIND -1))
 
 echo "Hello, $NAME. Verbose is $VERBOSE. Extra args: $@"
+```
+# Bash Terminal & Redirection Checks
+
+The `[ -t FD ]` test is used to detect if a **File Descriptor (FD)** is a terminal (TTY). This allows scripts to switch between **Interactive** and **Automated** modes.
+
+## 1. File Descriptor Reference
+
+| FD | Name | Default Source/Target |
+| :--- | :--- | :--- |
+| **0** | `stdin` | Keyboard (Input) |
+| **1** | `stdout` | Screen (Normal Output) |
+| **2** | `stderr` | Screen (Error Output) |
+
+---
+
+## 2. Common "If" Checks
+
+### Check Input (`stdin`)
+Determine if a human is typing or if data is being piped in.
+```bash
+if [ -t 0 ]; then
+    echo "Interactive: Input is from a keyboard."
+else
+    echo "Automated: Input is being piped or redirected."
+fi
+---
+if [ -t 1 ]; then
+    echo -e "\e[32mSuccess!\e[0m (Output is a terminal, showing colors)"
+else
+    echo "Success! (Output is a file/pipe, hiding colors)"
+fi
+---
+if [ ! -t 2 ]; then
+    echo "Alert: Errors are being redirected to a log file."
+fi
+---
+if [ -t 0 ]; then
+    # Terminal detected: Ask a human
+    read -r -p "Enter name: " name
+    echo "Hello, $name"
+else
+    # Pipe detected: Process the stream
+    while read -r line; do
+        echo "Processing piped name: $line"
+    done
+fi
+```
