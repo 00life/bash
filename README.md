@@ -129,10 +129,9 @@ tmp_file=$(mktemp)
 # 2. Set the trap (runs rm when script exits, even if it fails)
 # EXIT covers normal finish, Ctrl+C, and errors.
 trap 'rm -f "$tmp_file"' EXIT
+trap 'echo "Script failed at $LINENO"' ERR
 
 # Bash Loops Summary
-
-
 | Loop Type | Usage | Best For... |
 | :--- | :--- | :--- |
 | **`for...in`** | `for x in list; do` | Iterating over arrays, files, or strings. |
