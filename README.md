@@ -181,3 +181,32 @@ while [[ $# -gt 0 ]]; do
 done
 set -- "${POSITIONAL[@]}" # Restore positional arguments
 ```
+# Bash `getopts` Cheatsheet (Short Flags)
+
+`getopts` is the standard for handling single-letter options.
+
+## Syntax Rules
+- `getopts "abc" opt`: Handles `-a`, `-b`, and `-c`. No values allowed.
+- `getopts "a:b" opt`: `-a` **requires** a value (e.g., `-a 100`), `-b` does not.
+- `getopts ":ab:" opt`: Leading `:` enables **silent error mode** (you handle errors in the `?` case).
+
+## Example Template
+```bash
+#!/bin/bash
+
+# Default values
+NAME="Guest"
+VERBOSE=0
+
+while getopts "n:v" opt; do
+  case ${opt} in
+    n) NAME="$OPTARG" ;;
+    v) VERBOSE=1 ;;
+    *) echo "Usage: $0 [-n name] [-v]" && exit 1 ;;
+  esac
+done
+
+# Shift away the flags so $1 is the first non-flag argument
+shift $((OPTIND -1))
+
+echo "Hello, $NAME. Verbose is $VERBOSE. Extra args: $@"
