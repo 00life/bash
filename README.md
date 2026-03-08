@@ -114,8 +114,8 @@ Variables are temporary to the shell session or specific functions.
 
 
 # 2. Set the trap (runs rm when script exits, even if it fails)
-# Since temporary files persist after a script crashes or finishes, use a **Trap** to delete them automatically on exit.
-# EXIT covers normal finish, Ctrl+C, and errors.
+**Since temporary files persist after a script crashes or finishes, use a **Trap** to delete them automatically on exit.**
+**EXIT covers normal finish, Ctrl+C, and errors.**
 trap 'rm -f "$tmp_file"' EXIT
 trap 'echo "Script failed at $LINENO"' ERR
 
