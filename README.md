@@ -4,19 +4,14 @@ In Bash, `if` statements use these operators within `[ ]` (test) or `[[ ]]` (ext
 ## 1. File Test Operators
 Check properties of files and directories.
 
-| Flag | True if... |
-| :--- | :--- |
-| `-e` | File **exists** |
-| `-f` | File is a **regular file** (not a directory) |
-| `-d` | File is a **directory** |
-| `-s` | File is **not empty** (size > 0) |
-| `-r` | File is **readable** |
-| `-w` | File is **writable** |
-| `-x` | File is **executable** |
-| `-L` | File is a **symbolic link** |
-| `-O` | You are the **owner** of the file |
-| `-nt` | File1 is **newer than** File2 (`f1 -nt f2`) |
-| `-ot` | File1 is **older than** File2 (`f1 -ot f2`) |
+| Flag | True if... | Flag | True if... |
+| :--- | :--- | :--- | :--- |
+| `-e` | File **exists** | `-x` | File is **executable** |
+| `-f` | File is a **regular file** (not a directory) | `-L` | File is a **symbolic link** |
+| `-d` | File is a **directory** | `-O` | You are the **owner** of the file |
+| `-s` | File is **not empty** (size > 0) | `-nt` | File1 is **newer than** File2 (`f1 -nt f2`) |
+| `-r` | File is **readable** | `-ot` | File1 is **older than** File2 (`f1 -ot f2`) |
+| `-w` | File is **writable** |||
 
 
 ## 2. String Operators
