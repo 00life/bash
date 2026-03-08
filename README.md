@@ -28,14 +28,11 @@ Compare text and check for empty variables.
 ## 3. Integer Operators
 Compare whole numbers.
 
-| Flag | Description |
-| :--- | :--- |
-| `-eq` | **Equal** to |
-| `-ne` | **Not equal** to |
-| `-gt` | **Greater than** |
-| `-ge` | **Greater than or equal** to |
-| `-lt` | **Less than** |
-| `-le` | **Less than or equal** to |
+| Flag | Description | Flag | Description |
+| :--- | :--- | :--- | :--- |
+| `-eq` | **Equal** to | `-ge` | **Greater than or equal** to |
+| `-ne` | **Not equal** to | `-lt` | **Less than** |
+| `-gt` | **Greater than** | `-le` | **Less than or equal** to |
 
 
 ## 4. Logical Operators
