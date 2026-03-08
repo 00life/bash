@@ -155,13 +155,10 @@ set -- "${POSITIONAL[@]}" # Restore positional arguments
 - `getopts "a:b" opt`: `-a` **requires** a value (e.g., `-a 100`), `-b` does not.
 - `getopts ":ab:" opt`: Leading `:` enables **silent error mode** (you handle errors in the `?` case).
 
-## Example Template
+## Example getopts Template
 ```bash
-#!/bin/bash
-
-# Default values
-NAME="Guest"
-VERBOSE=0
+NAME="Guest" # Default
+VERBOSE=0    # Default
 
 while getopts "n:v" opt; do
   case ${opt} in
@@ -171,19 +168,16 @@ while getopts "n:v" opt; do
   esac
 done
 
-# Shift away the flags so $1 is the first non-flag argument
-shift $((OPTIND -1))
+shift $((OPTIND -1)) # Shift away the flags so $1 is the first non-flag argument
 
 echo "Hello, $NAME. Verbose is $VERBOSE. Extra args: $@"
 ```
 
 # Bash Terminal & Redirection Checks
-
 The `[ -t FD ]` test is used to detect if a **File Descriptor (FD)** is a terminal (TTY). 
 This allows scripts to switch between **Interactive** and **Automated** modes.
 
 ## 1. File Descriptor Reference
-
 | FD | Name | Default Source/Target |
 | :--- | :--- | :--- |
 | **0** | `stdin` | Keyboard (Input) |
