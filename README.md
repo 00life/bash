@@ -240,3 +240,15 @@ else
     done
 fi
 ```
+
+## Log Function Example
+```bash
+fn_log() {
+  case $1 in
+    ERROR|error) shift; echo "[!] $@" ;;
+    INFO|info)   shift; echo "[+] $@" ;;
+    WARN|warn)   shift; echo "[!] $@" ;;
+    *)                  echo "[+] $@" ;;
+  esac
+}
+```
