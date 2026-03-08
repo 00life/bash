@@ -114,10 +114,12 @@ Variables are temporary to the shell session or specific functions.
 
 
 # 2. Set the trap (runs rm when script exits, even if it fails)
-**Since temporary files persist after a script crashes or finishes, use a **Trap** to delete them automatically on exit.**
-**EXIT covers normal finish, Ctrl+C, and errors.**
+USe **Trap** to delete temp file automatically on exit.
+EXIT covers normal finish, Ctrl+C, and errors.**
+```
 trap 'rm -f "$tmp_file"' EXIT
 trap 'echo "Script failed at $LINENO"' ERR
+```
 
 # Bash Loops Summary
 | Loop Type | Usage | Best For... |
@@ -139,7 +141,7 @@ trap 'echo "Script failed at $LINENO"' ERR
 | **`for cat`** | `for x in $(cat file); do ... done` | **Risky.** Breaks on spaces/tabs, slow on large files. |
 | **Process Sub** | `while read -r line; do ... done < <(command)` | **Powerful.** Allows reading output of a command as a file. |
 
-### Example: Reading Multiple Columns
+## Example: Reading Multiple Columns
 If your file is CSV-like (e.g., `Name,Age`), you can split it into variables immediately:
 ```bash
 while IFS="," read -r name age; do
@@ -192,7 +194,8 @@ echo "Hello, $NAME. Verbose is $VERBOSE. Extra args: $@"
 
 # Bash Terminal & Redirection Checks
 
-The `[ -t FD ]` test is used to detect if a **File Descriptor (FD)** is a terminal (TTY). This allows scripts to switch between **Interactive** and **Automated** modes.
+The `[ -t FD ]` test is used to detect if a **File Descriptor (FD)** is a terminal (TTY). 
+This allows scripts to switch between **Interactive** and **Automated** modes.
 
 ## 1. File Descriptor Reference
 
@@ -204,9 +207,7 @@ The `[ -t FD ]` test is used to detect if a **File Descriptor (FD)** is a termin
 
 ---
 
-## 2. Common "If" Checks
-
-### Check Input (`stdin`)
+## Check Input (`stdin`)
 Determine if a human is typing or if data is being piped in.
 ```bash
 if [ -t 0 ]; then
