@@ -68,11 +68,10 @@ elif [[ -z "$VAR" ]]; then
 else
     echo "Condition not met."
 fi
+```
 
-# Bash Temporary Data Cheatsheet
-
+## Bash Temporary Data Cheatsheet
 Summary of methods for handling temporary files, folders, and variables in Bash.
-
 ---
 
 ## 1. Files and Directories (`mktemp`)
