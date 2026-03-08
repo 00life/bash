@@ -144,11 +144,23 @@ trap 'rm -f "$tmp_file"' EXIT
 - **`break`**: Stop the loop entirely.
 - **`continue`**: Skip to the next loop cycle.
 
-## Pro-Tip: File Globbing
+# Bash File Iteration: `while read` vs `cat`
+
+| Method | Syntax | Pros/Cons |
+| :--- | :--- | :--- |
+| **`while read`** | `while read -r line; do ... done < file` | **Safe.** Handles spaces, saves memory, standard practice. |
+| **`for cat`** | `for x in $(cat file); do ... done` | **Risky.** Breaks on spaces/tabs, slow on large files. |
+| **Process Sub** | `while read -r line; do ... done < <(command)` | **Powerful.** Allows reading output of a command as a file. |
+
+### Why `while read` is better:
+1. **Memory Efficiency**: It processes one line at a time.
+2. **Data Integrity**: Using `IFS= read -r` ensures the line is read exactly as it appears in the file.
+3. **Variable Scope**: Using `< file` (redirection) keeps variables modified inside the loop available after the loop ends (unlike piping `cat file | while...`, which creates a subshell).
+
+### Example: Reading Multiple Columns
+If your file is CSV-like (e.g., `Name,Age`), you can split it into variables immediately:
 ```bash
-for file in *.jpg; do
-    mv "$file" "${file%.jpg}.png"
-done
-```
-# 3. Use the file
-echo "Working..." > "$tmp_file"
+while IFS="," read -r name age; do
+    echo "$name is $age years old"
+done < data.csv
+
