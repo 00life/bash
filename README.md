@@ -104,6 +104,7 @@ Variables are temporary to the shell session or specific functions.
 | **Shell Var** | `TEMP="data"` | Available until the script ends. |
 | **Local Var** | `local tmp="data"` | Only available inside a **function**. |
 | **One-shot** | `VAR=val ./script` | Only available to that **one command**. |
+| **Set --** | `set -- hello world` | echo ${1} ${2}. |
 
 ---
 
