@@ -80,15 +80,15 @@ Variables are temporary to the shell session or specific functions.
 ---
 
 ## Output Redirection Cheatsheet
-| Operator | Target | Behavior |
-| :--- | :--- | :--- |
-| `>` | stdout | Overwrite file |
-| `>>` | stdout | Append to file |
-| `2>` | stderr | Overwrite file |
-| `&>` | stdout + stderr | Overwrite file |
-| `&>>` | stdout + stderr | Append to file |
-| `> /dev/null` | stdout | Discard output |
-| `2>&1` | stderr | Merge stderr into stdout |
+| Operator | Target | Behavior | Operator | Target | Behavior |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `>` | stdout | Overwrite file | `&>>` | stdout + stderr | Append to file |
+| `>>` | stdout | Append to file | `> /dev/null` | stdout | Discard output |
+| `2>` | stderr | Overwrite file | `2>&1` | stderr | Merge stderr into stdout |
+| `&>` | stdout + stderr | Overwrite file ||||
+
+
+
 
 
 # 2. Set the trap (runs rm when script exits, even if it fails)
