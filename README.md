@@ -1,10 +1,8 @@
 # Bash Conditional Operators Cheatsheet
-
 In Bash, `if` statements use these operators within `[ ]` (test) or `[[ ]]` (extended test) blocks.
 
 ## 1. File Test Operators
 Check properties of files and directories.
-
 
 | Flag | True if... |
 | :--- | :--- |
@@ -114,6 +112,19 @@ Since temporary files persist after a script crashes or finishes, use a **Trap**
 ```bash
 # 1. Create the temp file
 tmp_file=$(mktemp)
+```
+
+## Output Redirection Cheatsheet
+| Operator | Target | Behavior |
+| :--- | :--- | :--- |
+| `>` | stdout | Overwrite file |
+| `>>` | stdout | Append to file |
+| `2>` | stderr | Overwrite file |
+| `&>` | stdout + stderr | Overwrite file |
+| `&>>` | stdout + stderr | Append to file |
+| `> /dev/null` | stdout | Discard output |
+| `2>&1` | stderr | Merge stderr into stdout |
+
 
 # 2. Set the trap (runs rm when script exits, even if it fails)
 # EXIT covers normal finish, Ctrl+C, and errors.
