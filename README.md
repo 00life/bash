@@ -44,7 +44,6 @@ Combine multiple conditions.
 | `&&` | `[[ C1 && C2 ]]` | **AND** (Both must be true) |
 | `||` | `[[ C1 || C2 ]]` | **OR** (At least one must be true) |
 
----
 
 ## Basic Template
 ```bash
