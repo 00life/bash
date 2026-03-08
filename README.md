@@ -151,10 +151,13 @@ done < data.csv
 
 ## Args Parse for the Standard Pattern
 ```bash
+#/ DESCRIPTION GOES HERE
+
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -u|--user)     USER="$2"; shift 2 ;; # Flag with value
     -v|--verbose)  VERBOSE=1; shift ;;   # Boolean flag
+    -h|--help)     grep '^#/' < "$0" | cut -c 4-; exit 0 ;; # Prints the DESCRIPION
     --)            shift; break ;;       # End of options
     *)             POSITIONAL+=("$1"); shift ;; # Save positional args
   esac
