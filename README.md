@@ -153,6 +153,10 @@ done < data.csv
 ```bash
 #/ DESCRIPTION GOES HERE
 
+USER=""        #default
+VERBOSE=0      #default
+POSITIONAL=()  #default array
+
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -u|--user)     USER="$2"; shift 2 ;; # Flag with value
