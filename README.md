@@ -25,24 +25,14 @@ Compare text and check for empty variables.
 | `!=` | Strings are **not equal** |
 
 
-## 3. Integer Operators
+## 3. Integer Operators & Logical Operators
 Compare whole numbers.
 
-| Flag | Description | Flag | Description |
-| :--- | :--- | :--- | :--- |
-| `-eq` | **Equal** to | `-ge` | **Greater than or equal** to |
-| `-ne` | **Not equal** to | `-lt` | **Less than** |
-| `-gt` | **Greater than** | `-le` | **Less than or equal** to |
-
-
-## 4. Logical Operators
-Combine multiple conditions.
-
-| Operator | Usage | Description |
-| :--- | :--- | :--- |
-| `!` | `! CONDITION` | **NOT** (Inverts the result) |
-| `&&` | `[[ C1 && C2 ]]` | **AND** (Both must be true) |
-| `\|\|` | `[[ C1 \|\| C2 ]]` | **OR** (At least one must be true) |
+| Flag | Description | Flag | Description | Operator | Usage | Description |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `-eq` | **Equal** to | `-ge` | **Greater than or equal** to | `!` | `! CONDITION` | **NOT** (Inverts the result) |
+| `-ne` | **Not equal** to | `-lt` | **Less than** | `&&` | `[[ C1 && C2 ]]` | **AND** (Both must be true) |
+| `-gt` | **Greater than** | `-le` | **Less than or equal** to | `\|\|` | `[[ C1 \|\| C2 ]]` | **OR** (At least one must be true) |
 
 
 ## Basic Template
