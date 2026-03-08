@@ -18,9 +18,9 @@ Check properties of files and directories.
 | `-nt` | File1 is **newer than** File2 (`f1 -nt f2`) |
 | `-ot` | File1 is **older than** File2 (`f1 -ot f2`) |
 
+
 ## 2. String Operators
 Compare text and check for empty variables.
-
 
 | Flag/Op | True if... |
 | :--- | :--- |
@@ -32,9 +32,9 @@ Compare text and check for empty variables.
 | `>` | String sorts **after** another (ASCII) |
 | `=~` | String matches **regex** (requires `[[ ]]`) |
 
+
 ## 3. Integer Operators
 Compare whole numbers.
-
 
 | Flag | Description |
 | :--- | :--- |
@@ -45,9 +45,9 @@ Compare whole numbers.
 | `-lt` | **Less than** |
 | `-le` | **Less than or equal** to |
 
+
 ## 4. Logical Operators
 Combine multiple conditions.
-
 
 | Operator | Usage | Description |
 | :--- | :--- | :--- |
@@ -68,13 +68,8 @@ else
 fi
 ```
 
-## Bash Temporary Data Cheatsheet
-Summary of methods for handling temporary files, folders, and variables in Bash.
----
-
 ## 1. Files and Directories (`mktemp`)
 The `mktemp` command is the safest way to create unique, secure temporary objects.
-
 
 | Action | Command | Description |
 | :--- | :--- | :--- |
@@ -83,9 +78,9 @@ The `mktemp` command is the safest way to create unique, secure temporary object
 | **Custom Name** | `mktemp /tmp/log.XXXX` | Uses `X` as placeholders for random chars. |
 | **Dry Run** | `mktemp -u` | Generates a unique name **without** creating it. |
 
+
 ## 2. Temporary Data Streams
 Pass data between commands without creating physical files on the disk.
-
 
 | Method | Syntax | Description |
 | :--- | :--- | :--- |
@@ -93,9 +88,9 @@ Pass data between commands without creating physical files on the disk.
 | **Here-Doc** | `<<EOF` | Passes a multi-line block of text to a command. |
 | **Here-String**| `<<< "$VAR"` | Passes a variable's content as a file input. |
 
+
 ## 3. Variables
 Variables are temporary to the shell session or specific functions.
-
 
 | Type | Syntax | Scope |
 | :--- | :--- | :--- |
@@ -105,14 +100,6 @@ Variables are temporary to the shell session or specific functions.
 | **Set --** | `set -- hello world` | echo ${1} ${2}. |
 
 ---
-
-## 4. Best Practice: Automatic Cleanup
-Since temporary files persist after a script crashes or finishes, use a **Trap** to delete them automatically on exit.
-
-```bash
-# 1. Create the temp file
-tmp_file=$(mktemp)
-```
 
 ## Output Redirection Cheatsheet
 | Operator | Target | Behavior |
@@ -127,6 +114,7 @@ tmp_file=$(mktemp)
 
 
 # 2. Set the trap (runs rm when script exits, even if it fails)
+# Since temporary files persist after a script crashes or finishes, use a **Trap** to delete them automatically on exit.
 # EXIT covers normal finish, Ctrl+C, and errors.
 trap 'rm -f "$tmp_file"' EXIT
 trap 'echo "Script failed at $LINENO"' ERR
@@ -151,11 +139,6 @@ trap 'echo "Script failed at $LINENO"' ERR
 | **`for cat`** | `for x in $(cat file); do ... done` | **Risky.** Breaks on spaces/tabs, slow on large files. |
 | **Process Sub** | `while read -r line; do ... done < <(command)` | **Powerful.** Allows reading output of a command as a file. |
 
-### Why `while read` is better:
-1. **Memory Efficiency**: It processes one line at a time.
-2. **Data Integrity**: Using `IFS= read -r` ensures the line is read exactly as it appears in the file.
-3. **Variable Scope**: Using `< file` (redirection) keeps variables modified inside the loop available after the loop ends (unlike piping `cat file | while...`, which creates a subshell).
-
 ### Example: Reading Multiple Columns
 If your file is CSV-like (e.g., `Name,Age`), you can split it into variables immediately:
 ```bash
@@ -163,10 +146,6 @@ while IFS="," read -r name age; do
     echo "$name is $age years old"
 done < data.csv
 ```
-
-# Bash Argument Parsing Cheatsheet
-
-Using a `while` + `case` loop is the most flexible way to handle script inputs.
 
 ## Args Parse for the Standard Pattern
 ```bash
@@ -180,8 +159,8 @@ while [[ $# -gt 0 ]]; do
 done
 set -- "${POSITIONAL[@]}" # Restore positional arguments
 ```
-# Bash `getopts` Cheatsheet (Short Flags)
 
+# Bash `getopts` Cheatsheet (Short Flags)
 `getopts` is the standard for handling single-letter options.
 
 ## Syntax Rules
@@ -210,6 +189,7 @@ shift $((OPTIND -1))
 
 echo "Hello, $NAME. Verbose is $VERBOSE. Extra args: $@"
 ```
+
 # Bash Terminal & Redirection Checks
 
 The `[ -t FD ]` test is used to detect if a **File Descriptor (FD)** is a terminal (TTY). This allows scripts to switch between **Interactive** and **Automated** modes.
