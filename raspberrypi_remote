@@ -19,7 +19,7 @@ func_compare() {
     cat $CODE > $PATH_LOG;
     EXEC_CMD=$(cat  $CODE | grep -E "^COMMAND" | cut -d "=" -f 2 | tr -d '"' | tr -d "'");
     echo $EXEC_CMD;
-    exit 0
+    exit 0;
   fi
 };
 
