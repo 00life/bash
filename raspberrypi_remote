@@ -7,7 +7,7 @@ COMMAND="echo hello world";
 
 func_compare() {
 
-  if [[ ! $PATH_LOG -e ]]; then
+  if [[ ! $HOME/github.log -e ]]; then
     exit 1;
 
   elif cmp -s "$CODE" "$PATH_LOG"; then
