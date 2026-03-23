@@ -174,11 +174,11 @@ The `[ -t FD ]` test is used to detect if a **File Descriptor (FD)** is a termin
 This allows scripts to switch between **Interactive** and **Automated** modes.
 
 ## 1. File Descriptor Reference
-| FD | Name | Default Source/Target |
-| :--- | :--- | :--- |
-| **0** | `stdin` | Keyboard (Input) |
-| **1** | `stdout` | Screen (Normal Output) |
-| **2** | `stderr` | Screen (Error Output) |
+| FD | Name | Default Source/Target | Examples to Null |
+| :--- | :--- | :--- |:---|
+| **0** | `stdin` | Keyboard (Input) | `stdout 2> /dev/nul` |
+| **1** | `stdout` | Screen (Normal Output) |`stderrt&stdout 2>&1 /dev/null ` for sh |
+| **2** | `stderr` | Screen (Error Output) |`stderrt&stdout &> /dev/null ` for bash |
 
 ---
 
