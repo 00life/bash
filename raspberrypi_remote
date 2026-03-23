@@ -12,15 +12,15 @@ func_compare() {
     exit 1;
 
   elif cmp -s "$CODE" "$PATH_LOG"; then
-    echo "Files are identical. Exist 1";
+    echo "Files are identical. Exit 1";
     exit 1;
 
   else
-    echo "Files are different.  Exist 0";
+    echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
     EXEC_CMD=$(cat  $CODE | grep -E "^COMMAND" | cut -d "=" -f 2 | tr -d '"' | tr -d "'");
     echo "$COMMAND";
-    /bin/bash $EXEC_CMD;
+    /bin/bash "$EXEC_CMD";
     exit 0;
   fi
 };
