@@ -5,6 +5,23 @@ CODE=$(mktemp); curl -sL $API -o $CODE;
 PATH_LOG=$HOME/github.log;
 COMMAND="echo hello world";
 
+#/ [ Deluge torrent commands ]
+#/ ---------------------------
+#/ curl -d '{"method": "auth.login", "params": ["your_password"], "id": 1}' -K curl.cfg
+#/ curl -b cookie_deluge.txt -d '{"method": "core.add_torrent_magnet", "params": ["<magnet_uri_here>", {}], "id": 1}' http://localhost:8112/json
+#/ curl -b cookie_deluge.txt -d '{"method": "web.connected", "params": [], "id": 1}' http://localhost:8112/json
+#/ curl -b cookie_deluge.txt -d '{"method": "web.add_torrents", "params": [[{"path":"/path/to/your/torrent/file.torrent", "options":null}]], "id": 1}' http://localhost:8112/json
+#/ curl -b cookie_deluge.txt -d '{"method": "web.get_torrent_files", "params": ["<torrent_id_here>"], "id": 1}' http://localhost:8112/json
+
+#// request = "POST"
+#// compressed
+#// cookie = "cookie_deluge.txt"
+#// cookie-jar = "cookie_deluge.txt"
+#// header = "Content-Type: application/json"
+#// header = "Accept: application/json"
+#// url = "http://192.168.2.24:8112/json"
+#// write-out = "\n"
+
 func_compare() {
 
   if [[ ! -f $PATH_LOG ]]; then
