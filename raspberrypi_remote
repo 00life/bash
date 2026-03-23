@@ -8,7 +8,7 @@ COMMAND="echo hello world";
 func_compare() {
 
   if [[ ! -f $PATH_LOG ]]; then
-    echo "File does not exit. Creating log.  Exit 1";
+    echo "File does not exit. Creating github.log.  Exit 1";
     echo "" > $PATH_LOG;
     exit 1
 
