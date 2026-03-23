@@ -18,7 +18,7 @@ func_compare() {
     echo "Files are different";
     cat $CODE > $PATH_LOG;
     EXEC_CMD=$(cat  $CODE | grep -E "^COMMAND" | cut -d "=" -f 2 | tr -d '"' | tr -d "'");
-    echo $EXEC_CMD;
+    /bin/bash $EXEC_CMD;
     exit 0;
   fi
 };
