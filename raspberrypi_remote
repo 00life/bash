@@ -18,7 +18,6 @@ func_compare() {
   else
     echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
-    EXEC_CMD=$(cat  $CODE | grep -E "^COMMAND" | cut -d "=" -f 2;
     echo "COMMAND=$COMMAND";
     exit 0
   fi
