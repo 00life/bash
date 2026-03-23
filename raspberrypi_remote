@@ -8,14 +8,15 @@ COMMAND="echo hello world";
 func_compare() {
 
   if [[ ! -f $PATH_LOG ]]; then
+    echo "File does not exit.  Exit 1";
     exit 1;
 
   elif cmp -s "$CODE" "$PATH_LOG"; then
-    echo "Files are identical";
+    echo "Files are identical. Exist 1";
     exit 1;
 
   else
-    echo "Files are different";
+    echo "Files are different.  Exist 0";
     cat $CODE > $PATH_LOG;
     EXEC_CMD=$(cat  $CODE | grep -E "^COMMAND" | cut -d "=" -f 2 | tr -d '"' | tr -d "'");
     /bin/bash $EXEC_CMD;
