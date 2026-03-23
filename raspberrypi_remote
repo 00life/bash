@@ -1,1 +1,29 @@
-echo "hello world"
+#!/bin/bash
+
+API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi_remote";
+CODE=$(mktemp); curl -sL $API -o $CODE;
+PATH_LOG=$HOME/github.log;
+COMMAND="echo hello world";
+
+func_compare() {
+
+  if [[ ! $PATH_LOG -e ]]; then
+    exit 1;
+
+  elif cmp -s "$CODE" "$PATH_LOG"; then
+    echo "Files are identical";
+    exit 1;
+
+  else
+    echo "Files are different";
+    cat $CODE > $PATH_LOG;
+    EXEC_CMD=$(cat  $CODE | grep -E "^COMMAND" | cut -d "=" -f 2 | tr -d '"' | tr -d "'");
+    echo $EXEC_CMD;
+    exit 0
+  fi
+};
+
+func_compare;
+
+
+
