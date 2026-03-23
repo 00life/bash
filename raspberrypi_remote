@@ -19,6 +19,7 @@ func_compare() {
     echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
     echo "COMMAND=$COMMAND";
+    eval "$COMMAND";
     exit 0
   fi
 };
