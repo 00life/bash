@@ -4,7 +4,7 @@ API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi
 URL_PI="http://192.168.2.24:8112/json"
 CODE=$(mktemp); curl -sL $API -o ${CODE};
 PATH_LOG=${HOME}/github.log;
-echo test0
+
 #/ [ Deluge torrent commands ]
 #/ ---------------------------
 #/ curl -d '{"method": "auth.login", "params": ["your_password"], "id": 1}' -K curl.cfg
@@ -15,8 +15,7 @@ echo test0
 #/ curl -d '{"method": "core.add_torrent_magnet", "params": ["magnet:?xt=urn:btih:...", {}], "id": 1}' -K curl.cfg
 
 CURL_COOKIE=$(mktemp --suffix=".txt");
-curl -c ${CURL_COOKIE} --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
-echo test1
+curl -s -c ${CURL_COOKIE} --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
 CURL_CONFIG=$(mktemp --suffix=".cfg");
 cat <<EOF > $CURL_CONFIG 
