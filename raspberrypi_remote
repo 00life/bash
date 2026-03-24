@@ -35,27 +35,3 @@ echo $MAGNET;
 COMMAND="curl -d '{"method": "core.add_torrent_magnet", "params": ["$MAGNET", {}], "id": 1}' -K "$CURL_CONFIG"
 echo $COMMAND;
 echo test3
-
-func_compare() {
-
-  if [[ ! -f $PATH_LOG ]]; then
-    # echo "File does not exit. Creating github.log.  Exit 1";
-    echo "" > $PATH_LOG;
-    exit 1
-
-  elif cmp -s "$CODE" "$PATH_LOG"; then
-    # echo "Files are identical. Exit 1";
-    exit 1
-
-  else
-    # echo "Files are different.  Exit 0";
-    cat $CODE > $PATH_LOG;
-    eval "$COMMAND";
-    exit 0
-  fi
-};
-
-#func_compare;
-
-
-
