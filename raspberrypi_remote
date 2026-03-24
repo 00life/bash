@@ -23,7 +23,6 @@ echo""
 echo "-------------";
 echo test5;
 echo "---------------";
-cat $CURL_COOKIE
 echo "------------------";
 
 COMMAND=$(cat <<EOF | tr '\n' ' '
