@@ -34,7 +34,7 @@ MAGNET='magnet:?xt=urn:btih:6d90f05977199f65a8838e4291cfa52dbb581d5f&dn=%5BSubsP
 echo "";
 echo test3;
 
-COMMAND="curl --compressed -c $CURL_COOKIE -H \"Content-Type: application/json\" -H \"Accept: application/json\" -d \"{\"method\": \"core.add_torrent_magnet\", \"params\": [\"$MAGNET\", {}], \"id\": 1}\" $URL_PI "
+COMMAND="curl --compressed -c $CURL_COOKIE -H \"Content-Type: application/json\" -H \"Accept: application/json\" -d \"{\"method\": \"core.add_torrent_magnet\", \"params\": [\"$MAGNET\", {}], \"id\": 1}\" \"$URL_PI\" "
 
 echo $COMMAND;
 
