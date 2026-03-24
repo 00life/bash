@@ -33,7 +33,7 @@ MAGNET=magnet:?xt=urn:btih:c5cec3e98471a5a457926ddeb86b11aaaa3f114f&dn=%5BSubsPl
 
 echo "";
 
-COMMAND="curl -d '{\"method\": \"core.add_torrent_magnet\", \"params\": [$MAGNET, {}], \"id\": 1}' -K \"$CURL_CONFIG\""
+COMMAND="curl -d '{\"method\": \"core.add_torrent_magnet\", \"params\": [\""$MAGNET"\", {}], \"id\": 1}' -K \"$CURL_CONFIG\""
 
 echo Command
 echo $COMMAND;
