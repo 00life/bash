@@ -1,36 +1,36 @@
 #!/bin/bash
 
 API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi_remote";
-ADDR_PI="http://192.168.2.24:8112/json"
+URL_PI="http://192.168.2.24:8112/json"
 CODE=$(mktemp); curl -sL $API -o ${CODE};
 PATH_LOG=${HOME}/github.log;
-COMMAND="echo hello world";
 
 #/ [ Deluge torrent commands ]
 #/ ---------------------------
-#/ save session cookie to cookie_deluge.txt (use with -b)
 #/ curl -d '{"method": "auth.login", "params": ["your_password"], "id": 1}' -K curl.cfg
 #/ curl -b cookie_deluge.txt -d '{"method": "core.add_torrent_magnet", "params": ["<magnet_uri_here>", {}], "id": 1}' http://localhost:8112/json
 #/ curl -b cookie_deluge.txt -d '{"method": "web.connected", "params": [], "id": 1}' http://localhost:8112/json
 #/ curl -b cookie_deluge.txt -d '{"method": "web.add_torrents", "params": [[{"path":"/path/to/your/torrent/file.torrent", "options":null}]], "id": 1}' http://localhost:8112/json
 #/ curl -b cookie_deluge.txt -d '{"method": "web.get_torrent_files", "params": ["<torrent_id_here>"], "id": 1}' http://localhost:8112/json
+#/ curl -d '{"method": "core.add_torrent_magnet", "params": ["magnet:?xt=urn:btih:...", {}], "id": 1}' -K curl.cfg
 
 CURL_COOKIE=$(mktemp --suffix=".txt");
-curl -c ${CURL_COOKIE} --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${ADDR_PI};
+curl -c ${CURL_COOKIE} --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
-CURL_CONFIG=$(mktemp);
+CURL_CONFIG=$(mktemp --suffix=".cfg");
 cat << EOF > $CURL_CONFIG 
 request = "POST"
 compressed
 cookie = "${CURL_COOKIE}"
-cookie-jar = "cookie_deluge.txt"
+cookie-jar = "${CURL_COOKIE}"
 header = "Content-Type: application/json"
 header = "Accept: application/json"
-url = "http://192.168.2.24:8112/json"
+url = "${URL_PI}"
 write-out = "\n"
 EOF
 
-cat $CURL_CONFIG;
+MAGNET="magnet:?xt=urn:btih:c5cec3e98471a5a457926ddeb86b11aaaa3f114f&dn=%5BSubsPlease%5D%20So%20You%27re%20Raising%20a%20Warrior%20%2801-12%29%20%28480p%29%20%5BBatch%5D&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce"
+COMMAND="curl -d '{"method": "core.add_torrent_magnet", "params": ["$MAGNET", {}], "id": 1}' -K "$CURL_CONFIG"
 
 func_compare() {
 
