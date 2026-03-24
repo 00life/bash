@@ -18,7 +18,7 @@ CURL_COOKIE=$(mktemp --suffix=".txt");
 curl -s -c ${CURL_COOKIE} --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
 CURL_CONFIG=$(mktemp --suffix=".cfg");
-cat <<EOF > $CURL_CONFIG 
+<<EOF > $CURL_CONFIG 
 request = "POST"
 compressed
 cookie = "${CURL_COOKIE}"
@@ -50,7 +50,6 @@ func_compare() {
   else
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
-    echo "COMMAND=$COMMAND";
     eval "$COMMAND";
     exit 0
   fi
