@@ -14,14 +14,19 @@ COMMAND="echo hello world";
 #/ curl -b cookie_deluge.txt -d '{"method": "web.add_torrents", "params": [[{"path":"/path/to/your/torrent/file.torrent", "options":null}]], "id": 1}' http://localhost:8112/json
 #/ curl -b cookie_deluge.txt -d '{"method": "web.get_torrent_files", "params": ["<torrent_id_here>"], "id": 1}' http://localhost:8112/json
 
-#// request = "POST"
-#// compressed
-#// cookie = "cookie_deluge.txt"
-#// cookie-jar = "cookie_deluge.txt"
-#// header = "Content-Type: application/json"
-#// header = "Accept: application/json"
-#// url = "http://192.168.2.24:8112/json"
-#// write-out = "\n"
+CURL_CONFIG=$(mktemp);
+#<< `###EOF` > $CURL_CONFIG 
+request = "POST"
+compressed
+cookie = "cookie_deluge.txt"
+cookie-jar = "cookie_deluge.txt"
+header = "Content-Type: application/json"
+header = "Accept: application/json"
+url = "http://192.168.2.24:8112/json"
+write-out = "\n"
+###EOF
+
+cat $CURL_CONFIG;
 
 func_compare() {
 
