@@ -1,8 +1,9 @@
 #!/bin/bash
 
 API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi_remote";
-CODE=$(mktemp); curl -sL $API -o $CODE;
-PATH_LOG=$HOME/github.log;
+ADDR_PI="http://192.168.2.24:8112/json"
+CODE=$(mktemp); curl -sL $API -o ${CODE};
+PATH_LOG=${HOME}/github.log;
 COMMAND="echo hello world";
 
 #/ [ Deluge torrent commands ]
@@ -14,17 +15,20 @@ COMMAND="echo hello world";
 #/ curl -b cookie_deluge.txt -d '{"method": "web.add_torrents", "params": [[{"path":"/path/to/your/torrent/file.torrent", "options":null}]], "id": 1}' http://localhost:8112/json
 #/ curl -b cookie_deluge.txt -d '{"method": "web.get_torrent_files", "params": ["<torrent_id_here>"], "id": 1}' http://localhost:8112/json
 
+CURL_COOKIE=$(mktemp --suffix=".txt");
+curl -c ${CURL_COOKIE} --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${ADDR_PI};
+
 CURL_CONFIG=$(mktemp);
-#<< `###EOF` > $CURL_CONFIG 
+cat << EOF > $CURL_CONFIG 
 request = "POST"
 compressed
-cookie = "cookie_deluge.txt"
+cookie = "${CURL_COOKIE}"
 cookie-jar = "cookie_deluge.txt"
 header = "Content-Type: application/json"
 header = "Accept: application/json"
 url = "http://192.168.2.24:8112/json"
 write-out = "\n"
-###EOF
+EOF
 
 cat $CURL_CONFIG;
 
