@@ -15,7 +15,7 @@ PATH_LOG=${HOME}/github.log;
 #/ curl -d '{"method": "core.add_torrent_magnet", "params": ["magnet:?xt=urn:btih:...", {}], "id": 1}' -K curl.cfg
 
 CURL_COOKIE=$(mktemp --suffix=".txt");
-curl -s -c ${CURL_COOKIE} --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
+curl -c ${CURL_COOKIE} --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
 CURL_CONFIG=$(mktemp --suffix=".cfg");
 <<EOF > $CURL_CONFIG 
