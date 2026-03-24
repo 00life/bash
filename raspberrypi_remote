@@ -21,7 +21,7 @@ MAGNET='magnet:?xt=urn:btih:6d90f05977199f65a8838e4291cfa52dbb581d5f&dn=%5BSubsP
 
 echo""
 echo "-------------";
-echo test2;
+echo test3;
 echo "---------------";
 cat $CURL_COOKIE
 echo "------------------";
@@ -32,7 +32,8 @@ curl -c \"$CURL_COOKIE\"
 -H \"Accept: application/json\" 
 -d '{\"method\": \"core.add_torrent_magnet\", \"params\": [\""$MAGNET"\", {}], \"id\": 1}'
 --compressed 
-$URL_PI;
+$URL_PI
+EOF
 )
 
 echo $COMMAND;
