@@ -32,9 +32,9 @@ EOF
 MAGNET='magnet:?xt=urn:btih:6d90f05977199f65a8838e4291cfa52dbb581d5f&dn=%5BSubsPlease%5D%20Release%20that%20Witch%20-%2004%20%28720p%29%20%5B5ACCE2F1%5D.mkv&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce'
 
 echo "";
-echo test6;
+echo test8;
 
-COMMAND="curl -d \"{\"method\": \"core.add_torrent_magnet\", \"params\": [\"$MAGNET\", {}], \"id\": 1}\" -K \"$CURL_CONFIG\""
+COMMAND="curl -K $CURL_CONFIG -d \"{\"method\": \"core.add_torrent_magnet\", \"params\": [\"$MAGNET\", {}], \"id\": 1}\" "
 
 echo $COMMAND;
 
