@@ -21,7 +21,7 @@ MAGNET='magnet:?xt=urn:btih:6d90f05977199f65a8838e4291cfa52dbb581d5f&dn=%5BSubsP
 
 echo""
 echo "-------------";
-echo test4;
+echo test5;
 echo "---------------";
 cat $CURL_COOKIE
 echo "------------------";
@@ -38,7 +38,7 @@ EOF
 
 echo $COMMAND;
 
-#eval $COMMAND;
+eval $COMMAND;
 #func_compare() {
 
 #  if [[ ! -f $PATH_LOG ]]; then
