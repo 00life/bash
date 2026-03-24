@@ -23,6 +23,7 @@ echo""
 echo "-------------";
 echo test5;
 echo "---------------";
+cat $CURL_COOKIE
 echo "------------------";
 
 COMMAND=$(cat <<EOF | tr '\n' ' '
@@ -38,6 +39,8 @@ EOF
 echo $COMMAND;
 
 eval $COMMAND;
+echo ---------------------
+cat $CURL_COOKIE
 #func_compare() {
 
 #  if [[ ! -f $PATH_LOG ]]; then
