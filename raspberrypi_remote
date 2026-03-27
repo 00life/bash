@@ -9,7 +9,7 @@ MAGNET='magnet:?xt=urn:btih:89F636687A5AD8813D8FD2D9B2FCB1DC97766918&dn=Mike+%26
 TORRENT='';
 
 #/ [ Associative Arrays ]
-declare -A MAG=( [METHOD]="core.add_torrent_magnet" [PARAM]=["$MAGNET", {}] );
+declare -A ARRAY=( [MAG]="core.add_torrent_magnet" [PARAM]=["$MAGNET", {}] );
 declare -A TOR=( [METHOD]="web.get_torrent_files" [PARAM]=["$TORRENT"] );
 declare -A CONN=( [METHOD]="web.connected" [PARAM]=[] );
 declare -A ADD=( [METHOD]="web.add_torrents" [PARAM]=[[{"path":"/path/to/your/torrent/file.torrent", "options":null}]] );
