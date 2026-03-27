@@ -67,18 +67,18 @@ func_compare() {
   if [[ ! -f $PATH_LOG ]]; then
     # echo "File does not exit. Creating github.log.  Exit 1";
     echo "" > $PATH_LOG;
-    func_clean
+    func_clean;
     exit 1
 
   elif cmp -s "$CODE" "$PATH_LOG"; then
     # echo "Files are identical. Exit 1";
-    func_clean
+    func_clean;
     exit 1
 
   else
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
-    COMMAND_OUTPUT=$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})
+    COMMAND_OUTPUT=$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]});
 	func_email $COMMAND_OUTPUT;
     func_clean;
 	exit 0
