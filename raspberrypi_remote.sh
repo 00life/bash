@@ -78,8 +78,8 @@ func_compare() {
   else
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
-    COMMAND_OUTPUT=$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]});
-	func_email $COMMAND_OUTPUT;
+    #COMMAND_OUTPUT=$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]});
+	#func_email $COMMAND_OUTPUT;
     func_clean;
 	exit 0
   fi
