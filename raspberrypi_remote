@@ -25,7 +25,7 @@ func_command() {
     -X POST
     -H "Content-Type: application/json" 
     -H "Accept: application/json"
-    -d '{"method": "$STR_TYPE", "params": $ARR_PARAM, "id": 1}'
+    -d '{"method": "$MAG[METHOD]", "params": $MAG[PARAM], "id": 1}'
     --compressed 
     $URL_PI
   EOF
