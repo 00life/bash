@@ -2,23 +2,23 @@
 
 #/ [ Variables ]
 
-#API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi_remote.sh";
-#URL_PI="http://192.168.2.24:8112/json"
-#CODE=$(mktemp); curl -sL $API -o ${CODE};
-#PATH_LOG=${HOME}/github.log;
-#CURL_COOKIE=$(mktemp --suffix=".txt");
+API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi_remote.sh";
+URL_PI="http://192.168.2.24:8112/json"
+CODE=$(mktemp); curl -sL $API -o ${CODE};
+PATH_LOG=${HOME}/github.log;
+CURL_COOKIE=$(mktemp --suffix=".txt");
 
-#MAGNET='magnet:?xt=urn:btih:89F636687A5AD8813D8FD2D9B2FCB1DC97766918&dn=Mike+%26amp%3B+Nick+%26amp%3B+Nick+%26amp%3B+Alice+%282026%29+Eng+1080p+WEBRip+x265+DDP+5.1+ESub&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker.bt4g.com%3A443%2Fannounce&tr=udp%3A%2F%2Fwepzone.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fttk2.nbaonlineservice.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce';
-#TORRENT='';
-#PATH_TOR='/tmp/torrent.txt';
+MAGNET='magnet:?xt=urn:btih:89F636687A5AD8813D8FD2D9B2FCB1DC97766918&dn=Mike+%26amp%3B+Nick+%26amp%3B+Nick+%26amp%3B+Alice+%282026%29+Eng+1080p+WEBRip+x265+DDP+5.1+ESub&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.theoks.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=https%3A%2F%2Ftracker.bt4g.com%3A443%2Fannounce&tr=udp%3A%2F%2Fwepzone.net%3A6969%2Fannounce&tr=udp%3A%2F%2Fttk2.nbaonlineservice.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tryhackx.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.srv00.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce';
+TORRENT='';
+PATH_TOR='/tmp/torrent.txt';
 
 
 #/ [ Index Arrays ]
 
-#ARR_MAG=("core.add_torrent_magnet" ["$MAGNET",{}]);
-#ARR_TOR=("core.web.get_torrent_files" ["$TORRENT"]);
-#ARR_CONN=("web.connected" []);
-#ARR_ADD=(""web.add_torrents" [[{"path":"$PATH_TOR","options":null}]]);
+ARR_MAG=("core.add_torrent_magnet" ["$MAGNET",{}]);
+ARR_TOR=("core.web.get_torrent_files" ["$TORRENT"]);
+ARR_CONN=("web.connected" []);
+ARR_ADD=(""web.add_torrents" [[{"path":"$PATH_TOR","options":null}]]);
 
 
 #/ [ Get Auth.Login Cookie ]
@@ -61,7 +61,7 @@
 #  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
 #};
 
-echo test2
+echo test3
 
 #func_compare() {
 
