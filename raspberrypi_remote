@@ -29,12 +29,13 @@ EOF
 
 
 func_email() {
-  JSON_OUTPUT=$1;
+  local COMMAND_OUTPUT=$1;
+
   cat <<EOF | tr '\n' ' ' | bash 
       curl -X POST
       -H "Content-Type: application/json" 
       -H "Accept: application/json"
-      -d '{"method":"POST", "body":"$JSON_OUTPUT"}'
+      -d '{"Email":"pawn88@live.com","Subject":"RASPBERRYPI_REMOTE_OUTPUT","Message":"$COMMAND_OUTPUT"}'
       https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
     EOF
 };
@@ -63,9 +64,8 @@ func_compare() {
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
     COMMAND_OUTPUT=$(eval $COMMAND);
-    BODY_OUTPUT="{'Email': 'pawn88@live.com', 'Subject':'REMOTE_COMMAND', 'Message': \'$COMMAND_OUTPUT\'}";
-	func_email $BODY_OUTPUT || echo 'EMAIL FAILED';
-    func_clean
+	func_email $COMMAND_OUTPUT;
+    func_clean;
 	exit 0
   fi
 };
