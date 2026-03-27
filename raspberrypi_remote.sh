@@ -2,7 +2,7 @@
 
 #/ [ Variables ]
 
-API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi_remote";
+API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi_remote.sh";
 URL_PI="http://192.168.2.24:8112/json"
 CODE=$(mktemp); curl -sL $API -o ${CODE};
 PATH_LOG=${HOME}/github.log;
