@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#/ [ Variables ]
+
 API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi_remote";
 URL_PI="http://192.168.2.24:8112/json"
 CODE=$(mktemp); curl -sL $API -o ${CODE};
@@ -10,13 +12,21 @@ MAGNET='magnet:?xt=urn:btih:89F636687A5AD8813D8FD2D9B2FCB1DC97766918&dn=Mike+%26
 TORRENT='';
 PATH_TOR='/tmp/torrent.txt';
 
+
 #/ [ Index Arrays ]
+
 ARR_MAG=("core.add_torrent_magnet" ["$MAGNET",{}]);
 ARR_TOR=("core.web.get_torrent_files" ["$TORRENT"]);
 ARR_CONN=("web.connected" []);
 ARR_ADD=(""web.add_torrents" [[{"path":"$PATH_TOR","options":null}]]);
 
+
+#/ [ Get Auth.Login Cookie ]
+
 curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
+
+
+#/ [ Functions ]
 
 func_command() {
   STR_TYPE=$1;
@@ -32,7 +42,6 @@ func_command() {
     $URL_PI
   EOF
 };
-
 
 func_email() {
   local COMMAND_OUTPUT=$1;
@@ -76,4 +85,5 @@ func_compare() {
   fi
 };
 
+#/ [ Run Main Function ]
 func_compare;
