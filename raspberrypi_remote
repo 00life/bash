@@ -7,7 +7,6 @@ PATH_LOG=${HOME}/github.log;
 
 #/ [ Deluge torrent commands ]
 #/ ---------------------------
-#/ curl -d '{"method": "auth.login", "params": ["your_password"], "id": 1}' -K curl.cfg
 #/ curl -b cookie_deluge.txt -d '{"method": "core.add_torrent_magnet", "params": ["<magnet_uri_here>", {}], "id": 1}' http://localhost:8112/json
 #/ curl -b cookie_deluge.txt -d '{"method": "web.connected", "params": [], "id": 1}' http://localhost:8112/json
 #/ curl -b cookie_deluge.txt -d '{"method": "web.add_torrents", "params": [[{"path":"/path/to/your/torrent/file.torrent", "options":null}]], "id": 1}' http://localhost:8112/json
@@ -16,8 +15,7 @@ PATH_LOG=${HOME}/github.log;
 CURL_COOKIE=$(mktemp --suffix=".txt");
 curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
-MAGNET='magnet:?xt=urn:btih:C30A147080E050558435463955313514B74D576F&dn=Protector+2025+1080p+SCREENER+WEB-DL+H264+AAC-II&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopentracker.io%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2F&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fbandito.byterunner.io%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Fopen.free-tracker.ga%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.ipv6tracker.org%2Fannounce&tr=udp%3A%2F%2Ftracker2.dler.org%3A80%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce'
-
+MAGNET=''
 COMMAND=$(cat <<EOF | tr '\n' ' '
   curl -b "$CURL_COOKIE"
   -X POST
@@ -29,22 +27,31 @@ COMMAND=$(cat <<EOF | tr '\n' ' '
 EOF
 )
 
+
+func_clean() {
+  sudo rm -rf /tmp/*;
+  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND;
+};
+
+
 func_compare() {
 
   if [[ ! -f $PATH_LOG ]]; then
     # echo "File does not exit. Creating github.log.  Exit 1";
     echo "" > $PATH_LOG;
+    func_clean
     exit 1
 
   elif cmp -s "$CODE" "$PATH_LOG"; then
     # echo "Files are identical. Exit 1";
+    func_clean
     exit 1
 
   else
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
     eval $COMMAND;
-    sudo rm -rf /tmp/*;
+    func_clean
 	exit 0
   fi
 };
