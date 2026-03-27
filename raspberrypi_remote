@@ -5,7 +5,6 @@ URL_PI="http://192.168.2.24:8112/json"
 CODE=$(mktemp); curl -sL $API -o ${CODE};
 PATH_LOG=${HOME}/github.log;
 CURL_COOKIE=$(mktemp --suffix=".txt");
-OUTPUT=$(mktemp);
 MAGNET=''
 
 #/ [ Deluge torrent commands ]
