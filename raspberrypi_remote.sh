@@ -18,7 +18,7 @@ PATH_TOR='/tmp/torrent.txt';
 ARR_MAG=("core.add_torrent_magnet" ["$MAGNET",{}]);
 ARR_TOR=("core.web.get_torrent_files" ["$TORRENT"]);
 ARR_CONN=("web.connected" []);
-ARR_ADD=(""web.add_torrents" [[{"path":"$PATH_TOR","options":null}]]);
+ARR_ADD=("web.add_torrents" [[{"path":"$PATH_TOR","options":null}]]);
 
 
 #/ [ Get Auth.Login Cookie ]
