@@ -76,6 +76,7 @@ func_compare() {
     exit 1
 
   else
+    echo test1
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
     #COMMAND_OUTPUT=$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]});
