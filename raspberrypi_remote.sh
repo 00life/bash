@@ -28,38 +28,38 @@ curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"meth
 
 #/ [ Functions ]
 
-func_command() {
-  STR_TYPE=$1;
-  ARR_PARAM=$2;
+#func_command() {
+#  STR_TYPE=$1;
+#  ARR_PARAM=$2;
 
-  cat <<EOF | tr '\n' ' '
-    curl -b "$CURL_COOKIE"
-    -X POST
-    -H "Content-Type: application/json" 
-    -H "Accept: application/json"
-    -d '{"method": "$STR_TYPE", "params": $ARR_PARAM, "id": 1}'
-    --compressed 
-    $URL_PI
-  EOF
-};
+#  cat <<EOF | tr '\n' ' '
+#    curl -b "$CURL_COOKIE"
+#    -X POST
+#    -H "Content-Type: application/json" 
+#    -H "Accept: application/json"
+#    -d '{"method": "$STR_TYPE", "params": $ARR_PARAM, "id": 1}'
+#    --compressed 
+#    $URL_PI
+#  EOF
+#};
 
-func_email() {
-  local COMMAND_OUTPUT=$1;
+#func_email() {
+#  local COMMAND_OUTPUT=$1;
 
-  cat <<EOF | tr '\n' ' ' | bash 
-      curl -X POST
-      -H "Content-Type: application/json" 
-      -H "Accept: application/json"
-      -d '{"Email":"pawn88@live.com", "Subject":"RASPBERRYPI_REMOTE_OUTPUT", "Message":"$COMMAND_OUTPUT"}'
-      https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
-    EOF
-};
+#  cat <<EOF | tr '\n' ' ' | bash 
+#      curl -X POST
+#      -H "Content-Type: application/json" 
+#      -H "Accept: application/json"
+#      -d '{"Email":"pawn88@live.com", "Subject":"RASPBERRYPI_REMOTE_OUTPUT", "Message":"$COMMAND_OUTPUT"}'
+#      https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
+#    EOF
+#};
 
 
-func_clean() {
-  sudo rm -rf /tmp/*;
-  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
-};
+#func_clean() {
+#  sudo rm -rf /tmp/*;
+#  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
+#};
 
 echo test2
 
