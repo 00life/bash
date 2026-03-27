@@ -61,30 +61,31 @@ func_clean() {
   unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
 };
 
+echo test2
 
-func_compare() {
+#func_compare() {
 
-  if [[ ! -f $PATH_LOG ]]; then
+#  if [[ ! -f $PATH_LOG ]]; then
     # echo "File does not exit. Creating github.log.  Exit 1";
-    echo "" > $PATH_LOG;
-    func_clean;
-    exit 1
+#    echo "" > $PATH_LOG;
+#    func_clean;
+#    exit 1
 
-  elif cmp -s "$CODE" "$PATH_LOG"; then
+#  elif cmp -s "$CODE" "$PATH_LOG"; then
     # echo "Files are identical. Exit 1";
-    func_clean;
-    exit 1
+#    func_clean;
+#    exit 1
 
-  else
-    echo test1
+#  else
+#    echo test1
     # echo "Files are different.  Exit 0";
-    cat $CODE > $PATH_LOG;
+ #   cat $CODE > $PATH_LOG;
     #COMMAND_OUTPUT=$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]});
 	#func_email $COMMAND_OUTPUT;
-    func_clean;
-	exit 0
-  fi
-};
+#    func_clean;
+#	exit 0
+#  fi
+#};
 
 #/ [ Run Main Function ]
-func_compare;
+#func_compare;
