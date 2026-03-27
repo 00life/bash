@@ -64,7 +64,7 @@ func_compare() {
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
     COMMAND_OUTPUT=$(eval $COMMAND);
-	func_email $COMMAND_OUTPUT;
+	func_email $COMMAND_OUTPUT || echo '[!] Email Failed';
     func_clean;
 	exit 0
   fi
