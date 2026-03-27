@@ -16,16 +16,31 @@ MAGNET='magnet:?xt=urn:btih:89F636687A5AD8813D8FD2D9B2FCB1DC97766918&dn=Mike+%26
 
 curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
-COMMAND=$(cat <<EOF | tr '\n' ' '
-  curl -b "$CURL_COOKIE"
-  -X POST
-  -H "Content-Type: application/json" 
-  -H "Accept: application/json"
-  -d '{"method": "core.add_torrent_magnet", "params": ["$MAGNET", {}], "id": 1}'
-  --compressed 
-  $URL_PI
-EOF
-);
+func_command() {
+  STR_TYPE=$1;
+  ARR_PARAM=$2;
+
+  cat <<EOF | tr '\n' ' '
+    curl -b "$CURL_COOKIE"
+    -X POST
+    -H "Content-Type: application/json" 
+    -H "Accept: application/json"
+    -d '{"method": "$STR_TYPE", "params": $ARR_PARAM, "id": 1}'
+    --compressed 
+    $URL_PI
+  EOF
+};
+
+#COMMAND=$(cat <<EOF | tr '\n' ' '
+#  curl -b "$CURL_COOKIE"
+#  -X POST
+#  -H "Content-Type: application/json" 
+#  -H "Accept: application/json"
+#  -d '{"method": "core.add_torrent_magnet", "params": ["$MAGNET", {}], "id": 1}'
+#  --compressed 
+#  $URL_PI
+#EOF
+#);
 
 
 func_email() {
@@ -63,8 +78,8 @@ func_compare() {
   else
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
-    COMMAND_OUTPUT=$(eval $COMMAND);
-	func_email $COMMAND_OUTPUT || echo '[!] Email Failed';
+    COMMAND_OUTPUT=$(func_command "core.add_torrent_magnet"  ["$MAGNET",{}])
+	func_email $COMMAND_OUTPUT;
     func_clean;
 	exit 0
   fi
