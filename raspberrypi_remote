@@ -4,6 +4,9 @@ API="https://raw.githubusercontent.com/00life/bash/refs/heads/master/raspberrypi
 URL_PI="http://192.168.2.24:8112/json"
 CODE=$(mktemp); curl -sL $API -o ${CODE};
 PATH_LOG=${HOME}/github.log;
+CURL_COOKIE=$(mktemp --suffix=".txt");
+OUTPUT=$(mktemp);
+MAGNET=''
 
 #/ [ Deluge torrent commands ]
 #/ ---------------------------
@@ -12,10 +15,8 @@ PATH_LOG=${HOME}/github.log;
 #/ curl -b cookie_deluge.txt -d '{"method": "web.add_torrents", "params": [[{"path":"/path/to/your/torrent/file.torrent", "options":null}]], "id": 1}' http://localhost:8112/json
 #/ curl -b cookie_deluge.txt -d '{"method": "web.get_torrent_files", "params": ["<torrent_id_here>"], "id": 1}' http://localhost:8112/json
 
-CURL_COOKIE=$(mktemp --suffix=".txt");
 curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
-MAGNET=''
 COMMAND=$(cat <<EOF | tr '\n' ' '
   curl -b "$CURL_COOKIE"
   -X POST
@@ -25,14 +26,12 @@ COMMAND=$(cat <<EOF | tr '\n' ' '
   --compressed 
   $URL_PI
 EOF
-)
-
+);
 
 func_clean() {
   sudo rm -rf /tmp/*;
-  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND;
+  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
 };
-
 
 func_compare() {
 
@@ -50,7 +49,16 @@ func_compare() {
   else
     # echo "Files are different.  Exit 0";
     cat $CODE > $PATH_LOG;
-    eval $COMMAND;
+    eval $COMMAND > $OUTPUT;
+
+    cat <<EOF | tr '\n' ' ' | bash 
+      -X POST
+      -H "Content-Type: application/json" 
+      -H "Accept: application/json"
+      -d '{"method":"POST", "body":"$OUTPUT"}'
+      https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
+    EOF
+    
     func_clean
 	exit 0
   fi
