@@ -31,17 +31,6 @@ func_command() {
   EOF
 };
 
-#COMMAND=$(cat <<EOF | tr '\n' ' '
-#  curl -b "$CURL_COOKIE"
-#  -X POST
-#  -H "Content-Type: application/json" 
-#  -H "Accept: application/json"
-#  -d '{"method": "core.add_torrent_magnet", "params": ["$MAGNET", {}], "id": 1}'
-#  --compressed 
-#  $URL_PI
-#EOF
-#);
-
 
 func_email() {
   local COMMAND_OUTPUT=$1;
