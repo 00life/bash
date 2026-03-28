@@ -78,7 +78,7 @@ func_compare() {
   fi
 };
 
-echo test4
+echo test5
 
 #/ [ Run Main Function ]
 func_compare;
