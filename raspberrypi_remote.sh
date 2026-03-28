@@ -32,7 +32,7 @@ func_command() {
   STR_TYPE=$1;
   ARR_PARAM=$2;
 
-  cat <<EOF | tr '\n' ' '|bash
+  cat << EOF | tr '\n' ' '|bash
     curl -b "$CURL_COOKIE"
     -X POST
     -H "Content-Type: application/json" 
