@@ -22,7 +22,6 @@ ARR_ADD=("web.add_torrents" [[{"path":"$PATH_TOR","options":null}]]);
 
 
 #/ [ Get Auth.Login Cookie ]
-
 curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
 
@@ -43,9 +42,6 @@ func_command() {
 EOF
 };
 
-echo;
-echo test5;
-
 func_email() {
   local COMMAND_OUTPUT=$1;
 
@@ -57,14 +53,12 @@ func_email() {
       https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
 };
-echo test5;
 
-
-#func_clean() {
-#  sudo rm -rf /tmp/*;
-#  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
-#};
-
+func_clean() {
+  sudo rm -rf /tmp/*;
+  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
+};
+echo test6;
 #func_compare() {
 
 #  if [[ ! -f $PATH_LOG ]]; then
