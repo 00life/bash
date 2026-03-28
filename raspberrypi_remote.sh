@@ -75,16 +75,15 @@ func_compare() {
     OUT="$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})"
 	echo
 	echo
-	echo $OUT;
-	eval $OUT;
+	MSG="$(eval $OUT)";
 	echo
 	echo
-	#func_email $OUT;
+	func_email $MSG;
 	exit 0
   fi
 };
 
-echo test10
+echo test11
 
 #/ [ Run Main Function ]
 func_compare;
