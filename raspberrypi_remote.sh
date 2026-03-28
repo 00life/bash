@@ -80,11 +80,12 @@ func_compare() {
     cat $CODE > $PATH_LOG;
     local OUT="$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})";
 	eval $OUT 2>&1 | tee $EVAL ;
-	func_email $(cat $EVAL);
+	func_email "$(cat $EVAL)";
 	exit 0
   fi
 };
 
-echo test10
+echo
+echo test11
 #/ [ Run Main Function ]
 func_compare
