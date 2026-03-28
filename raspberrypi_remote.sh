@@ -7,6 +7,7 @@ URL_PI="http://192.168.2.24:8112/json"
 CODE=$(mktemp); curl -sL $API -o ${CODE};
 PATH_LOG=${HOME}/github.log;
 CURL_COOKIE=$(mktemp --suffix=".txt");
+FUNC_OUTPUT=$(mktemp);
 
 MAGNET='magnet:?xt=urn:btih:e78d93a0f235565a83301ac7a82b5b3a62d6eb4c&dn=%5BSubsPlease%5D%20Fate%20Strange%20Fake%20-%2013%20%28480p%29%20%5B3CD81DDD%5D.mkv&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce';
 TORRENT='';
@@ -59,7 +60,7 @@ EOF
 
 func_clean() {
   sudo rm -rf /tmp/*;
-  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
+  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT FUNC_OUTPUT;
 };
 
 
@@ -73,12 +74,14 @@ func_compare() {
 
   else
     cat $CODE > $PATH_LOG;
-    func_command ${ARR_MAG[0]} ${ARR_MAG[1]} | func_email;
+    func_command ${ARR_MAG[0]} ${ARR_MAG[1]} &> $FUNC_OUTPUT;
+	cat $FUNC_OUTPUT;
+	func_email $(cat $FUNC_OUTPUT);
 	exit 0
   fi
 };
 
-echo test8
+echo test9
 
 #/ [ Run Main Function ]
 func_compare;
