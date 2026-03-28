@@ -27,7 +27,7 @@ curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"meth
 
 
 #/ [ Functions ]
-
+echo test5
 func_command() {
   STR_TYPE=$1;
   ARR_PARAM=$2;
@@ -60,8 +60,6 @@ func_command() {
 #  sudo rm -rf /tmp/*;
 #  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
 #};
-
-echo test5
 
 #func_compare() {
 
