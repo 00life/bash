@@ -46,7 +46,7 @@ func_command() {
 #func_email() {
 #  local COMMAND_OUTPUT=$1;
 
-#  cat <<EOF | tr '\n' ' ' | bash 
+#  cat << EOF | tr '\n' ' ' | bash 
 #      curl -X POST
 #      -H "Content-Type: application/json" 
 #      -H "Accept: application/json"
