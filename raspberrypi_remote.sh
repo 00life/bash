@@ -9,7 +9,7 @@ PATH_LOG=${HOME}/github.log;
 CURL_COOKIE=$(mktemp --suffix=".txt");
 FUNC_OUTPUT=$(mktemp);
 
-MAGNET='magnet:?xt=urn:btih:e78d93a0f235565a83301ac7a82b5b3a62d6eb4c&dn=%5BSubsPlease%5D%20Fate%20Strange%20Fake%20-%2013%20%28480p%29%20%5B3CD81DDD%5D.mkv&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce';
+MAGNET='magnet:?xt=urn:btih:259D1D91F906F0991DB5E3123FDE0FA301C7EDD4&dn=Monarch.Legacy.of.Monsters.S02E05.1080p.x265-ELiTE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.fnix.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce';
 TORRENT='';
 PATH_TOR='/tmp/torrent.txt';
 
@@ -80,7 +80,7 @@ func_compare() {
   fi
 };
 
-echo test2
+echo test3
 
 #/ [ Run Main Function ]
 func_compare;
