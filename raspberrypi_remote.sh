@@ -79,11 +79,11 @@ func_compare() {
 	cat $MYTEMP;
 	echo 
 	echo
-	func_email $MYTEMP;
+	func_email $(cat $MYTEMP);
 	exit 0
   fi
 };
 
-echo test2
+echo test3
 #/ [ Run Main Function ]
 func_compare
