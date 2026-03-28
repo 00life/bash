@@ -7,6 +7,7 @@ URL_PI="http://192.168.2.24:8112/json"
 CODE=$(mktemp); curl -sL $API -o ${CODE};
 PATH_LOG=${HOME}/github.log;
 CURL_COOKIE=$(mktemp --suffix=".txt");
+OUT=$(mktemp);
 
 MAGNET='magnet:?xt=urn:btih:259D1D91F906F0991DB5E3123FDE0FA301C7EDD4&dn=Monarch.Legacy.of.Monsters.S02E05.1080p.x265-ELiTE&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.fnix.net%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.qu.ax%3A6969%2Fannounce&tr=http%3A%2F%2Ftracker.renfei.net%3A8080%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce';
 TORRENT='';
@@ -73,7 +74,10 @@ func_compare() {
 
   else
     cat $CODE > $PATH_LOG;
-    func_command ${ARR_MAG[0]} ${ARR_MAG[1]} | tee >(func_email);
+    func_command ${ARR_MAG[0]} ${ARR_MAG[1]} 2>&1 $OUT;
+	echo test;
+	cat $OUT;
+	func_email $OUT;
 	exit 0
   fi
 };
