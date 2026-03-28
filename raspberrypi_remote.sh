@@ -76,12 +76,12 @@ func_compare() {
 	MYTEMP=$(mktemp);
 	eval $OUT 2>&1 | tee $MYTEMP ;
 	echo
-	echo
-	func_email "$(cat $MYTEMP)";
+	cat $MYTEMP;
+	func_email "hello world";
 	exit 0
   fi
 };
 
-echo test20
+echo test1
 #/ [ Run Main Function ]
 func_compare
