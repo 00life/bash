@@ -39,8 +39,9 @@ func_command() {
     -H "Content-Type: application/json" 
     -H "Accept: application/json"
     -d '{"method": "$STR_TYPE", "params": $ARR_PARAM, "id": 1}'
+	-o $OUT
     --compressed 
-    $URL_PI &> $OUT
+    $URL_PI
 EOF
 };
 
@@ -81,7 +82,7 @@ func_compare() {
   fi
 };
 
-echo test9
+echo test1
 
 #/ [ Run Main Function ]
 func_compare;
