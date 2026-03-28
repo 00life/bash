@@ -32,7 +32,7 @@ func_command() {
   STR_TYPE=$1;
   ARR_PARAM=$2;
 
-  cat <<EOF | tr '\n' ' '
+  cat <<EOF | tr '\n' ' '|bash
     curl -b "$CURL_COOKIE"
     -X POST
     -H "Content-Type: application/json" 
@@ -61,7 +61,7 @@ func_command() {
 #  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
 #};
 
-echo test3
+echo test4
 
 #func_compare() {
 
