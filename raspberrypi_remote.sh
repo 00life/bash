@@ -23,25 +23,25 @@ ARR_ADD=("web.add_torrents" [[{"path":"$PATH_TOR","options":null}]]);
 
 #/ [ Get Auth.Login Cookie ]
 
-#curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
+curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
 
 #/ [ Functions ]
 
-#func_command() {
-#  STR_TYPE=$1;
-#  ARR_PARAM=$2;
+func_command() {
+  STR_TYPE=$1;
+  ARR_PARAM=$2;
 
-#  cat <<EOF | tr '\n' ' '
-#    curl -b "$CURL_COOKIE"
-#    -X POST
-#    -H "Content-Type: application/json" 
-#    -H "Accept: application/json"
-#    -d '{"method": "$STR_TYPE", "params": $ARR_PARAM, "id": 1}'
-#    --compressed 
-#    $URL_PI
-#  EOF
-#};
+  cat <<EOF | tr '\n' ' '
+    curl -b "$CURL_COOKIE"
+    -X POST
+    -H "Content-Type: application/json" 
+    -H "Accept: application/json"
+    -d '{"method": "$STR_TYPE", "params": $ARR_PARAM, "id": 1}'
+    --compressed 
+    $URL_PI
+  EOF
+};
 
 #func_email() {
 #  local COMMAND_OUTPUT=$1;
