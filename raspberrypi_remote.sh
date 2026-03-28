@@ -73,14 +73,15 @@ func_compare() {
   else
     cat $CODE > $PATH_LOG;
     OUT="$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})";
-	eval $OUT;
+	MYTEMP=$(mktemp);
+	eval $OUT 2>&1 | tee $MYTEMP ;
 	echo
 	echo
-	func_email "${OUT}";
+	func_email "$(cat $MYTEMP)";
 	exit 0
   fi
 };
 
-echo test19
+echo test20
 #/ [ Run Main Function ]
-func_compare;
+func_compare
