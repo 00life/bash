@@ -20,6 +20,7 @@ ARR_TOR=("core.web.get_torrent_files" ["$TORRENT"]);
 ARR_CONN=("web.connected" []);
 ARR_ADD=("web.add_torrents" [[{"path":"$PATH_TOR","options":null}]]);
 
+trap func_clean EXIT INT TERM
 
 #/ [ Get Auth.Login Cookie ]
 curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
@@ -42,6 +43,7 @@ func_command() {
 EOF
 };
 
+
 func_email() {
   local COMMAND_OUTPUT=$1;
 
@@ -54,34 +56,30 @@ func_email() {
 EOF
 };
 
+
 func_clean() {
   sudo rm -rf /tmp/*;
   unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
 };
-echo test6;
-#func_compare() {
 
-#  if [[ ! -f $PATH_LOG ]]; then
-    # echo "File does not exit. Creating github.log.  Exit 1";
-#    echo "" > $PATH_LOG;
-#    func_clean;
-#    exit 1
 
-#  elif cmp -s "$CODE" "$PATH_LOG"; then
-    # echo "Files are identical. Exit 1";
-#    func_clean;
-#    exit 1
+func_compare() {
+  if [[ ! -f $PATH_LOG ]]; then
+    echo > $PATH_LOG;
+	exit 1
 
-#  else
-#    echo test1
-    # echo "Files are different.  Exit 0";
- #   cat $CODE > $PATH_LOG;
-    #COMMAND_OUTPUT=$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]});
-	#func_email $COMMAND_OUTPUT;
-#    func_clean;
-#	exit 0
-#  fi
-#};
+  elif cmp -s "$CODE" "$PATH_LOG"; then
+    exit 1
+
+  else
+    cat $CODE > $PATH_LOG;
+    COMMAND_OUTPUT=$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]});
+	func_email $COMMAND_OUTPUT;
+	exit 0
+  fi
+};
+
+echo test7
 
 #/ [ Run Main Function ]
-#func_compare;
+func_compare;
