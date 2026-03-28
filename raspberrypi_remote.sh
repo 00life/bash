@@ -77,12 +77,12 @@ func_compare() {
     func_command ${ARR_MAG[0]} ${ARR_MAG[1]} 2>&1 $OUT;
 	echo test;
 	cat $OUT;
-	func_email $OUT;
+	func_email $(cat $OUT);
 	exit 0
   fi
 };
 
-echo test6
+echo tes7
 
 #/ [ Run Main Function ]
 func_compare;
