@@ -72,12 +72,12 @@ func_compare() {
 
   else
     cat $CODE > $PATH_LOG;
-    eval "func_command ${ARR_MAG[0]} ${ARR_MAG[1]}" | func_email;
+    eval "$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]}" | func_email;
 	exit 0
   fi
 };
 
-echo test7
+echo test8
 
 #/ [ Run Main Function ]
 func_compare;
