@@ -28,15 +28,15 @@ curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"meth
 
 #/ [ Functions ]
 echo;
-echo test2;
+echo test3;
 
 func_command() {
   STR_TYPE=$1;
   ARR_PARAM=$2;
 
   cat << EOF | tr '\n' ' '|bash
-  echo test2
-  EOF
+  echo test3
+EOF
 };
 
 #func_email() {
