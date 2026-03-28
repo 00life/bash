@@ -77,11 +77,13 @@ func_compare() {
 	eval $OUT 2>&1 | tee $MYTEMP ;
 	echo
 	cat $MYTEMP;
-	func_email "hello world";
+	echo 
+	echo
+	func_email $MYTEMP;
 	exit 0
   fi
 };
 
-echo test1
+echo test2
 #/ [ Run Main Function ]
 func_compare
