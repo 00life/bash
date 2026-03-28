@@ -28,14 +28,20 @@ curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"meth
 
 #/ [ Functions ]
 echo;
-echo test3;
+echo test4;
 
 func_command() {
   STR_TYPE=$1;
   ARR_PARAM=$2;
 
   cat << EOF | tr '\n' ' '|bash
-  echo test3
+   curl -b "$CURL_COOKIE"
+    -X POST
+    -H "Content-Type: application/json" 
+    -H "Accept: application/json"
+    -d '{"method": "$STR_TYPE", "params": $ARR_PARAM, "id": 1}'
+    --compressed 
+    $URL_PI
 EOF
 };
 
