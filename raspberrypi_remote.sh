@@ -23,7 +23,7 @@ ARR_ADD=("web.add_torrents" [[{"path":\"$PATH_TOR\","options":null}]]);
 trap func_clean EXIT INT TERM
 
 #/ [ Get Auth.Login Cookie ]
-curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI} 2>&1 /dev/null;
+curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
 
 #/ [ Functions ]
