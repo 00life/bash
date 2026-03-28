@@ -76,11 +76,11 @@ func_compare() {
 	eval $OUT;
 	echo
 	echo
-	func_email ${OUT};
+	func_email "${OUT}";
 	exit 0
   fi
 };
 
-echo test18
+echo test19
 #/ [ Run Main Function ]
 func_compare;
