@@ -32,7 +32,7 @@ func_command() {
   STR_TYPE=$1;
   ARR_PARAM=$2;
 
-  cat << EOF | tr '\n' ' '
+  cat << EOF | tr '\n' ' '|bash
    curl -b "$CURL_COOKIE"
     -H "Content-Type: application/json" 
     -H "Accept: application/json"
@@ -72,12 +72,13 @@ func_compare() {
 
   else
     cat $CODE > $PATH_LOG;
-    eval "$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]}" | func_email;
+    OUT=$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})
+	func_email $OUT;
 	exit 0
   fi
 };
 
-echo test8
+echo test9
 
 #/ [ Run Main Function ]
 func_compare;
