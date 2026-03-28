@@ -75,13 +75,14 @@ func_compare() {
   else
     cat $CODE > $PATH_LOG;
     func_command ${ARR_MAG[0]} ${ARR_MAG[1]} &> $FUNC_OUTPUT;
+	echo hello world;
 	cat $FUNC_OUTPUT;
 	func_email $(cat $FUNC_OUTPUT);
 	exit 0
   fi
 };
 
-echo test9
+echo test10
 
 #/ [ Run Main Function ]
 func_compare;
