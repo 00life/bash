@@ -45,7 +45,7 @@ EOF
 
 
 func_email() {
-  local MSG=$1;
+  local MSG="$1";
 
   cat << EOF | tr '\n' ' ' | bash 
       curl -X POST
@@ -80,6 +80,6 @@ func_compare() {
   fi
 };
 
-echo test6
+echo test7
 #/ [ Run Main Function ]
 func_compare
