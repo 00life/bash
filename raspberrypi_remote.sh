@@ -27,7 +27,9 @@ curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"meth
 
 
 #/ [ Functions ]
-echo test5
+echo "";
+echo test1;
+
 func_command() {
   STR_TYPE=$1;
   ARR_PARAM=$2;
