@@ -79,7 +79,7 @@ func_compare() {
 	echo
 	echo
 	echo
-	func_email $(echo $MSG);
+	func_email "$(echo $MSG)";
 	exit 0
   fi
 };
