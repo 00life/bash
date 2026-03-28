@@ -73,7 +73,7 @@ func_compare() {
 
   else
     cat $CODE > $PATH_LOG;
-    func_command ${ARR_MAG[0]} ${ARR_MAG[1]} | func_email;
+    func_command ${ARR_MAG[0]} ${ARR_MAG[1]} &> func_email;
 	exit 0
   fi
 };
