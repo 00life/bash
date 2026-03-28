@@ -73,7 +73,7 @@ func_compare() {
   else
     cat $CODE > $PATH_LOG;
     OUT="func_command ${ARR_MAG[0]} ${ARR_MAG[1]}";
-	OUT2="eval $OUT";
+	OUT2="eval \"$OUT\"";
 	func_email $OUT2;
 	exit 0
   fi
