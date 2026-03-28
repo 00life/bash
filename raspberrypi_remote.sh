@@ -61,7 +61,7 @@ func_command() {
 #  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
 #};
 
-echo test4
+echo test5
 
 #func_compare() {
 
