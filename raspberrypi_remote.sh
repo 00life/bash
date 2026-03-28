@@ -27,8 +27,6 @@ curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"meth
 
 
 #/ [ Functions ]
-echo;
-echo test4;
 
 func_command() {
   STR_TYPE=$1;
@@ -45,17 +43,21 @@ func_command() {
 EOF
 };
 
-#func_email() {
-#  local COMMAND_OUTPUT=$1;
+echo;
+echo test5;
 
-#  cat << EOF | tr '\n' ' ' | bash 
-#      curl -X POST
-#      -H "Content-Type: application/json" 
-#      -H "Accept: application/json"
-#      -d '{"Email":"pawn88@live.com", "Subject":"RASPBERRYPI_REMOTE_OUTPUT", "Message":"$COMMAND_OUTPUT"}'
-#      https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
-#EOF
-#};
+func_email() {
+  local COMMAND_OUTPUT=$1;
+
+  cat << EOF | tr '\n' ' ' | bash 
+      curl -X POST
+      -H "Content-Type: application/json" 
+      -H "Accept: application/json"
+      -d '{"Email":"pawn88@live.com", "Subject":"RASPBERRYPI_REMOTE_OUTPUT", "Message":"$COMMAND_OUTPUT"}'
+      https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
+EOF
+};
+echo test5;
 
 
 #func_clean() {
