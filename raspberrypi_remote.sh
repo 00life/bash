@@ -35,11 +35,10 @@ func_command() {
 
   cat << EOF | tr '\n' ' '|bash
    curl -b "$CURL_COOKIE"
-    -X POST
+	-o $OUT
     -H "Content-Type: application/json" 
     -H "Accept: application/json"
     -d '{"method": "$STR_TYPE", "params": $ARR_PARAM, "id": 1}'
-	-o $OUT
     --compressed 
     $URL_PI
 EOF
@@ -76,13 +75,12 @@ func_compare() {
   else
     cat $CODE > $PATH_LOG;
     func_command ${ARR_MAG[0]} ${ARR_MAG[1]};
-	cat $OUT;
 	func_email $(cat $OUT);
 	exit 0
   fi
 };
 
-echo test1
+echo test2
 
 #/ [ Run Main Function ]
 func_compare;
