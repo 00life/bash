@@ -44,13 +44,13 @@ EOF
 
 
 func_email() {
-  local COMMAND_OUTPUT=$1;
+  local MSG=$1;
 
   cat << EOF | tr '\n' ' ' | bash 
       curl -X POST
       -H "Content-Type: application/json" 
       -H "Accept: application/json"
-      -d '{"Email":"pawn88@live.com", "Subject":"RASPBERRYPI_REMOTE_OUTPUT", "Message":"$COMMAND_OUTPUT"}'
+      -d '{"Email":"pawn88@live.com", "Subject":"RASPBERRYPI_REMOTE_OUTPUT", "Message":"$MSG"}'
       https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
 };
@@ -58,7 +58,7 @@ EOF
 
 func_clean() {
   sudo rm -rf /tmp/*;
-  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND;
+  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET;
 };
 
 
@@ -79,7 +79,7 @@ func_compare() {
   fi
 };
 
-echo test3
+echo test4
 
 #/ [ Run Main Function ]
 func_compare;
