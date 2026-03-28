@@ -16,10 +16,10 @@ PATH_TOR='/tmp/torrent.txt';
 
 #/ [ Index Arrays ]
 
-ARR_MAG=("core.add_torrent_magnet" ["$MAGNET",{}]);
-ARR_TOR=("core.web.get_torrent_files" ["$TORRENT"]);
+ARR_MAG=("core.add_torrent_magnet" [\"$MAGNET\",{}]);
+ARR_TOR=("core.web.get_torrent_files" [\"$TORRENT\"]);
 ARR_CONN=("web.connected" []);
-ARR_ADD=("web.add_torrents" [[{"path":"$PATH_TOR","options":null}]]);
+ARR_ADD=("web.add_torrents" [[{"path":\"$PATH_TOR\","options":null}]]);
 
 trap func_clean EXIT INT TERM
 
@@ -80,7 +80,7 @@ func_compare() {
   fi
 };
 
-echo test1
+echo test2
 
 #/ [ Run Main Function ]
 func_compare;
