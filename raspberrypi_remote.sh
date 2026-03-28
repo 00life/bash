@@ -60,7 +60,7 @@ EOF
 
 func_clean() {
   sudo rm -rf /tmp/*;
-  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUTPUT;
+  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET COMMAND OUT;
 };
 
 
