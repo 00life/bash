@@ -30,8 +30,8 @@ curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"meth
 #/ [ Functions ]
 
 func_command() {
-  STR_TYPE=$1;
-  ARR_PARAM=$2;
+  local STR_TYPE=$1;
+  local ARR_PARAM=$2;
 
   cat << EOF | tr '\n' ' '
    curl -b "$CURL_COOKIE"
@@ -78,7 +78,7 @@ func_compare() {
 
   else
     cat $CODE > $PATH_LOG;
-    OUT="$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})";
+    local OUT="$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})";
 	eval $OUT 2>&1 | tee $EVAL ;
 	func_email $(cat $EVAL);
 	exit 0
