@@ -77,13 +77,15 @@ func_compare() {
 	echo
 	MSG="$(eval $OUT)";
 	echo
+	echo $MSG;
 	echo
-	func_email $MSG;
+	echo
+	func_email "$MSG";
 	exit 0
   fi
 };
 
-echo test11
+echo test12
 
 #/ [ Run Main Function ]
 func_compare;
