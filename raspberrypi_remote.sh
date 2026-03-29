@@ -45,7 +45,7 @@ EOF
 
 
 func_email() {
-  local MSG=$(cat $1|tr '\n' ' ');
+  local MSG=$(cat $1|tr '\n' ' '|sed 's/  */ /g');
   echo
   echo STARTING
   echo "$MSG";
