@@ -21,7 +21,7 @@ ARR_TOR=("core.web.get_torrent_files" [\"$TORRENT\"]);
 ARR_CONN=("web.connected" []);
 ARR_ADD=("web.add_torrents" [[{"path":\"$PATH_TOR\","options":null}]]);
 
-trap func_clean EXIT INT TERM
+trap func_clean EXIT INT TERM;
 
 #/ [ Get Auth.Login Cookie ]
 curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
@@ -52,13 +52,13 @@ func_email() {
   echo ENDING
   echo
 
-  cat << EOF | tr '\n' ' ' | sed 's/  */ /g'
-      curl -X POST
-      -H "Content-Type: application/json" 
-      -H "Accept: application/json"
-      -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "${MSG}"}'
-      https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
-EOF
+#cat << EOF | tr '\n' ' ' | sed 's/  */ /g'
+#      curl -X POST
+#      -H "Content-Type: application/json" 
+#      -H "Accept: application/json"
+#      -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "${MSG}"}'
+#      https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
+#EOF
 };
 
 
