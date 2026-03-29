@@ -21,9 +21,16 @@ ARR_TOR=("core.web.get_torrent_files" [\"$TORRENT\"]);
 ARR_CONN=("web.connected" []);
 ARR_ADD=("web.add_torrents" [[{"path":\"$PATH_TOR\","options":null}]]);
 
-trap func_clean EXIT INT TERM;
+#/ [ Trap Cleanup ]
+
+trap "$(cat << EOF
+  sudo rm -rf /tmp/*;
+  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET EVAL;
+)" EXIT INT TERM;
+
 
 #/ [ Get Auth.Login Cookie ]
+
 curl -c $CURL_COOKIE --compressed -H "Content-Type: application/json" -d '{"method": "auth.login", "params": ["pi"], "id": 1}' ${URL_PI};
 
 
@@ -60,10 +67,10 @@ func_email() {
 };
 
 
-func_clean() {
-  sudo rm -rf /tmp/*;
-  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET EVAL;
-};
+#func_clean() {
+#  sudo rm -rf /tmp/*;
+#  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET EVAL;
+#};
 
 
 func_compare() {
@@ -84,6 +91,6 @@ func_compare() {
 };
 
 echo
-echo test11
+echo test12
 #/ [ Run Main Function ]
 func_compare
