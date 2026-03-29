@@ -45,14 +45,14 @@ EOF
 
 
 func_email() {
-  local MSG=$(cat $1|tr '\n' ' '|sed 's/  */ /g');
+  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed 's/\"//g');
   echo
   echo STARTING
   echo "$MSG";
   echo ENDING
   echo
 
-  local REQ=$(cat << EOF | tr '\n' ' ' |sed 's/  */ /g'
+  local REQ=$(cat << EOF | tr '\n' ' ' | sed 's/  */ /g'
       curl -X POST
       -H "Content-Type: application/json" 
       -H "Accept: application/json"
@@ -88,6 +88,6 @@ func_compare() {
 };
 
 echo
-echo test4
+echo test6
 #/ [ Run Main Function ]
 func_compare
