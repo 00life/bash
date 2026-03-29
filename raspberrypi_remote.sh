@@ -53,11 +53,9 @@ EOF
 
 
 func_email() {
-  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed 's/\"//g'| sed 's/\'//g');
-#  echo STARTING
-#  echo "$MSG";
-#  echo ENDING
+  echo hello world
 };
+
 
 func_main() {
   if [[ ! -f $PATH_LOG ]]; then
