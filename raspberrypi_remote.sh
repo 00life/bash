@@ -45,7 +45,7 @@ EOF
 
 
 func_email() {
-  local MSG="$1";
+  local MSG=$1;
   echo
   echo STARTING
   echo "$MSG";
@@ -56,7 +56,7 @@ func_email() {
       curl -X POST
       -H "Content-Type: application/json" 
       -H "Accept: application/json"
-      -d "{\"Email\":\"pawn88@live.com\",\"Subject\":\"RASPBERRYPI_REMOTE_OUTPUT\", \"Message\": \"$(echo "${MSG}")\"}"
+      -d "{\"Email\":\"pawn88@live.com\",\"Subject\":\"RASPBERRYPI_REMOTE_OUTPUT\", \"Message\": \"$MSG\"}"
       https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
 };
@@ -80,12 +80,12 @@ func_compare() {
     cat $CODE > $PATH_LOG;
     local OUT="$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})";
 	eval $OUT 2>&1 | tee $EVAL ;
-	func_email "$(cat $EVAL)";
+	func_email $EVAL;
 	exit 0
   fi
 };
 
 echo
-echo test11
+echo test13
 #/ [ Run Main Function ]
 func_compare
