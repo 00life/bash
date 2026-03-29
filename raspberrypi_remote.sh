@@ -53,7 +53,7 @@ EOF
 
 
 func_email() {
-  echo hello world
+  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed 's/\"//g'| sed 's/\'//g');
 };
 
 
@@ -75,7 +75,7 @@ func_main() {
 };
 
 echo
-echo test17
+echo test18
 
 #/ [ Run Main Function ]
 func_main
