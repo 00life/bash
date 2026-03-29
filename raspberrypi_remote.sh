@@ -88,6 +88,6 @@ func_compare() {
 };
 
 echo
-echo test2
+echo test3
 #/ [ Run Main Function ]
 func_compare
