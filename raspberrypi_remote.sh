@@ -56,7 +56,7 @@ func_email() {
       curl -X POST
       -H "Content-Type: application/json" 
       -H "Accept: application/json"
-      -d "{\"Email\":\"pawn88@live.com\",\"Subject\":\"RASPBERRYPI_REMOTE_OUTPUT\", \"Message\": \""${MSG}"\"}"
+      -d "{\"Email\":\"pawn88@live.com\",\"Subject\":\"RASPBERRYPI_REMOTE_OUTPUT\", \"Message\": \"$(echo $MSG)\"}"
       https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
 };
@@ -86,6 +86,6 @@ func_compare() {
 };
 
 echo
-echo test8
+echo test9
 #/ [ Run Main Function ]
 func_compare
