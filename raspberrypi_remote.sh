@@ -45,7 +45,7 @@ EOF
 
 
 func_email() {
-  local MSG=$1;
+  local MSG=$(cat $1);
   echo
   echo STARTING
   echo "$MSG";
@@ -86,6 +86,6 @@ func_compare() {
 };
 
 echo
-echo test13
+echo test14
 #/ [ Run Main Function ]
 func_compare
