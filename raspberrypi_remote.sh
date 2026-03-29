@@ -59,7 +59,7 @@ func_email() {
       -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "${MSG}"}'
       https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
-  );
+);
       eval $REQ 2>&1 /dev/null;
 };
 
