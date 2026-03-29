@@ -44,13 +44,11 @@ EOF
 };
 
 
-func_email() {
-  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed 's/\"//g'| sed 's/\'//g');
-  echo
-  echo STARTING
-  echo "$MSG";
-  echo ENDING
-  echo
+#func_email() {
+#  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed 's/\"//g'| sed 's/\'//g');
+#  echo STARTING
+#  echo "$MSG";
+#  echo ENDING
 
 #cat << EOF | tr '\n' ' ' | sed 's/  */ /g'
 #      curl -X POST
@@ -59,7 +57,7 @@ func_email() {
 #      -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "${MSG}"}'
 #      https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 #EOF
-};
+#};
 
 
 func_clean() {
@@ -79,13 +77,13 @@ func_compare() {
   else
     cat $CODE > $PATH_LOG;
     local OUT="$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})";
-	eval $OUT 2>&1 | tee $EVAL ;
-	func_email $EVAL;
+#	eval $OUT 2>&1 | tee $EVAL ;
+#	func_email $EVAL;
 	exit 0
   fi
 };
 
 echo
-echo test8
+echo test9
 #/ [ Run Main Function ]
 func_compare
