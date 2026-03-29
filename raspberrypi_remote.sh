@@ -23,7 +23,7 @@ ARR_ADD=("web.add_torrents" [[{"path":\"$PATH_TOR\","options":null}]]);
 
 #/ [ Trap Cleanup ]
 
-trap "$(cat << EOF
+trap "$(cat << 'EOF'
   sudo rm -rf /tmp/*;
   unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET EVAL;
 EOF
@@ -52,8 +52,8 @@ EOF
 };
 
 
-func_email() {
-  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed 's/\"//g'| sed 's/\'//g');
+#func_email() {
+#  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed 's/\"//g'| sed 's/\'//g');
 #  echo STARTING
 #  echo "$MSG";
 #  echo ENDING
@@ -65,9 +65,9 @@ func_email() {
 #      -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "${MSG}"}'
 #      https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 #EOF
-};
+#};
 
-func_compare() {
+func_main() {
   if [[ ! -f $PATH_LOG ]]; then
     echo > $PATH_LOG;
 	exit 1
@@ -85,6 +85,7 @@ func_compare() {
 };
 
 echo
-echo test13
+echo test15
+
 #/ [ Run Main Function ]
-func_compare
+func_main
