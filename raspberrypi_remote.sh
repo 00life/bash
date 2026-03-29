@@ -45,7 +45,7 @@ EOF
 
 
 func_email() {
-  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed 's/\"//g');
+  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed 's/\"//g'| sed 's/\'//g');
   echo
   echo STARTING
   echo "$MSG";
@@ -59,8 +59,8 @@ func_email() {
       -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "${MSG}"}'
       https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
-);
-echo "$REQ";
+  );
+      eval $REQ 2>&1 /dev/null;
 };
 
 
@@ -88,6 +88,6 @@ func_compare() {
 };
 
 echo
-echo test6
+echo test7
 #/ [ Run Main Function ]
 func_compare
