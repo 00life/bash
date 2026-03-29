@@ -26,6 +26,7 @@ ARR_ADD=("web.add_torrents" [[{"path":\"$PATH_TOR\","options":null}]]);
 trap "$(cat << EOF
   sudo rm -rf /tmp/*;
   unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET EVAL;
+EOF
 )" EXIT INT TERM;
 
 
@@ -66,13 +67,6 @@ func_email() {
 #EOF
 };
 
-
-#func_clean() {
-#  sudo rm -rf /tmp/*;
-#  unset API URL_PI CODE PATH_LOG CURL_COOKIE MAGNET EVAL;
-#};
-
-
 func_compare() {
   if [[ ! -f $PATH_LOG ]]; then
     echo > $PATH_LOG;
@@ -91,6 +85,6 @@ func_compare() {
 };
 
 echo
-echo test12
+echo test13
 #/ [ Run Main Function ]
 func_compare
