@@ -54,7 +54,7 @@ EOF
 
 
 func_email() {
-  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed "s/[\'\"\n\r\t]//g");
+  local MSG=$(cat $1| sed 's/  */ /g' | sed "s/[\'\"\r\t]//g");
 
   local REQ=$(cat << EOF | tr '\n' ' '|sed 's/  */ /g'
      curl -X POST
