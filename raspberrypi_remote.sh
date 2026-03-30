@@ -64,6 +64,7 @@ func_email() {
      curl -X POST
 	 -H "Content-Type: application/json" 
      -H "Accept: application/json"
+	 -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "${MSG}"}'
 EOF
 #      curl -X POST
 #      -H "Content-Type: application/json" 
@@ -91,7 +92,7 @@ func_main() {
 };
 
 echo
-echo test4
+echo test5
 
 #/ [ Run Main Function ]
 func_main
