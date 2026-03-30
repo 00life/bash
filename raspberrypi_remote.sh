@@ -60,7 +60,7 @@ func_email() {
   echo ENDING
   echo
 
-  cat << EOF | tr '\n' ' '
+  cat << EOF | tr '\n' ' '|bash
      curl -X POST
 	 -H "Content-Type: application/json" 
      -H "Accept: application/json"
@@ -93,7 +93,7 @@ func_main() {
 };
 
 echo
-echo test6
+echo test7
 
 #/ [ Run Main Function ]
 func_main
