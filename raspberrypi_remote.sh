@@ -68,7 +68,7 @@ func_email() {
 	 https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
 )
-  echo $REQ
+  eval $REQ
 
 };
 
@@ -91,7 +91,7 @@ func_main() {
 };
 
 echo
-echo test13
+echo test14
 
 #/ [ Run Main Function ]
 func_main
