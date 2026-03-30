@@ -61,7 +61,9 @@ func_email() {
   echo
 
   cat << EOF | tr '\n' ' ' | sed 's/  */ /g'
-  echo TESTING
+     curl -X POST
+	 -H "Content-Type: application/json" 
+     -H "Accept: application/json"
 EOF
 #      curl -X POST
 #      -H "Content-Type: application/json" 
@@ -89,7 +91,7 @@ func_main() {
 };
 
 echo
-echo test3
+echo test4
 
 #/ [ Run Main Function ]
 func_main
