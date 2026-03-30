@@ -64,11 +64,11 @@ func_email() {
      curl -X POST
 	 -H "Content-Type: application/json" 
      -H "Accept: application/json"
-	 -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "test"}'
+	 -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "$MSG"}'
 	 https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
 )
-  eval $REQ
+  echo $REQ
 
 };
 
@@ -91,7 +91,7 @@ func_main() {
 };
 
 echo
-echo test12
+echo test13
 
 #/ [ Run Main Function ]
 func_main
