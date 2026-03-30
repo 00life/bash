@@ -55,7 +55,9 @@ EOF
 func_email() {
   local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed "s/[\'\"\{\}]//g");
   echo
+  echo
   echo $MSG
+  echo
   echo
 
   local REQ=$(cat << EOF | tr '\n' ' '|sed 's/  */ /g'
