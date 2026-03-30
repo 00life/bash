@@ -60,13 +60,16 @@ func_email() {
   echo ENDING
   echo
 
-  cat << EOF | tr '\n' ' '|bash
+  local REQ=$(cat << EOF | tr '\n' ' '|sed 's/  */ /g'
      curl -X POST
 	 -H "Content-Type: application/json" 
      -H "Accept: application/json"
 	 -d '{"Email": "pawn88@live.com", "Subject": "RASPBERRYPI_REMOTE_OUTPUT", "Message": "${MSG}"}'
 	 https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
+)
+  echo $REQ
+
 #      curl -X POST
 #      -H "Content-Type: application/json" 
 #      -H "Accept: application/json"
@@ -93,7 +96,7 @@ func_main() {
 };
 
 echo
-echo test7
+echo test8
 
 #/ [ Run Main Function ]
 func_main
