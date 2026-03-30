@@ -21,6 +21,7 @@ ARR_TOR=("core.web.get_torrent_files" [\"$TORRENT\"]);
 ARR_CONN=("web.connected" []);
 ARR_ADD=("web.add_torrents" [[{"path":\"$PATH_TOR\","options":null}]]);
 
+
 #/ [ Trap Cleanup ]
 
 trap "$(cat << 'EOF'
@@ -54,11 +55,6 @@ EOF
 
 func_email() {
   local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed "s/[\'\"\n\r\t]//g");
-  echo
-  echo
-  echo $MSG
-  echo
-  echo
 
   local REQ=$(cat << EOF | tr '\n' ' '|sed 's/  */ /g'
      curl -X POST
@@ -69,7 +65,6 @@ func_email() {
 EOF
 )
   eval $REQ
-
 };
 
 
@@ -90,8 +85,6 @@ func_main() {
   fi
 };
 
-echo
-echo test16
 
 #/ [ Run Main Function ]
 func_main
