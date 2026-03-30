@@ -53,7 +53,7 @@ EOF
 
 
 func_email() {
-  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed "s/[\'\"]//g");
+  local MSG=$(cat $1|tr '\n' ' ' | sed 's/  */ /g' | sed "s/[\'\"\{\}]//g");
   echo
   echo $MSG
   echo
@@ -66,7 +66,7 @@ func_email() {
 	 https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec
 EOF
 )
-  # eval $REQ
+  eval $REQ
 
 };
 
@@ -89,7 +89,7 @@ func_main() {
 };
 
 echo
-echo test11
+echo test12
 
 #/ [ Run Main Function ]
 func_main
