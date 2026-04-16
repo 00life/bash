@@ -79,8 +79,9 @@ func_main() {
   else
     cat $CODE > $PATH_LOG;
     local OUT="$(func_command ${ARR_MAG[0]} ${ARR_MAG[1]})";
+	local TEST="$(curl https://whatismyipaddress.com 2>&1)";
 	eval $OUT 2>&1 | tee $EVAL ;
-	func_email $EVAL;
+	func_email $TEST;
 	exit 0
   fi
 };
